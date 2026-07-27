@@ -1,0 +1,69 @@
+{
+  "heroTitle": "Ingeniería que escala negocios",
+  "heroSubtitle": "Desarrollo Web, Apps y Automatización con foco en conversión, performance y operación. Menos fricción, más resultados medibles.",
+  "aboutTitle": "Quién soy",
+  "aboutBody": "Soy Matías Rodríguez, Ingeniero en Informática. Diseño y construyo productos digitales con mentalidad de ingeniería: arquitectura clara, código mantenible y decisiones guiadas por datos. Trabajo con equipos y negocios que necesitan velocidad sin sacrificar calidad.",
+  "services": [
+    {
+      "id": "desarrollo-web",
+      "title": "Desarrollo Web",
+      "description": "Landing, corporativa o a medida. De la idea al deploy.",
+      "bullets": [
+        "Next.js y arquitectura escalable",
+        "UX orientado a conversión",
+        "Performance (Core Web Vitals)"
+      ]
+    },
+    {
+      "id": "ecommerce",
+      "title": "E-commerce",
+      "description": "Shopify o WooCommerce para vender sin fricción.",
+      "bullets": [
+        "Implementación y optimización",
+        "Integraciones y pagos",
+        "Mejora de conversión"
+      ]
+    },
+    {
+      "id": "apps-moviles",
+      "title": "Apps Móviles",
+      "description": "React Native para iOS/Android con enfoque producto.",
+      "bullets": [
+        "Arquitectura y componentes",
+        "Integración APIs",
+        "Publicación y soporte"
+      ]
+    },
+    {
+      "id": "automatizacion",
+      "title": "Automatización y Procesos",
+      "description": "Zapier e integraciones para operar con menos esfuerzo.",
+      "bullets": [
+        "Workflows y triggers",
+        "Conectores a CRM/Sheets/Notion",
+        "Alertas y reportes"
+      ]
+    },
+    {
+      "id": "growth",
+      "title": "Growth",
+      "description": "SEO, analítica (GA4) y comunicación para crecer.",
+      "bullets": [
+        "Setup GA4 y eventos",
+        "SEO técnico",
+        "Email marketing e iteración"
+      ]
+    },
+    {
+      "id": "gestion",
+      "title": "Gestión y Consultoría",
+      "description": "Planificación, roadmaps y decisiones digitales con claridad.",
+      "bullets": [
+        "Project management",
+        "Auditoría técnica",
+        "Estrategia y priorización"
+      ]
+    }
+  ],
+  "updatedAt": "2026-05-14T18:04:23.023Z"
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Matías Test",
+    "email": "matias.test@example.com",
+    "service": "desarrollo-web",
+    "budget": "$300.000 CLP",
+    "message": "Hola, quiero cotizar una landing + automatizaciones. ¿Puedes contactarme?",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36",
+    "referrer": "http://localhost:3000/",
+    "id": "b4e80be3-0614-4f90-af46-b7992e2edc45",
+    "createdAt": "2026-05-14T19:25:07.990Z"
+  }
+]

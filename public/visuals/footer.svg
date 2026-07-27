@@ -1,0 +1,27 @@
+<svg width="1600" height="450" viewBox="0 0 1600 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A0A12"/>
+      <stop offset="1" stop-color="#070A0F"/>
+    </linearGradient>
+    <radialGradient id="r1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(380 140) rotate(35) scale(760 360)">
+      <stop stop-color="#6366F1" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#0B1020" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="r2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1240 300) rotate(160) scale(680 360)">
+      <stop stop-color="#3B82F6" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#0B1020" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2.5" cy="2.5" r="1.2" fill="white" fill-opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="450" fill="url(#bg)"/>
+  <rect width="1600" height="450" fill="url(#r1)"/>
+  <rect width="1600" height="450" fill="url(#r2)"/>
+  <rect width="1600" height="450" fill="url(#dots)"/>
+  <g opacity="0.8">
+    <path d="M240 340C420 250 560 240 740 300C920 362 1100 370 1360 240" stroke="#6366F1" stroke-opacity="0.22" stroke-width="2"/>
+    <path d="M220 390C420 290 580 285 770 350C955 414 1120 420 1380 300" stroke="#3B82F6" stroke-opacity="0.18" stroke-width="2"/>
+  </g>
+</svg>
