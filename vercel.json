@@ -2,6 +2,13 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "env": {
-    "SITE_URL": "https://matiasrodriguez.dev"
-  }
+    "SITE_URL": "https://matiasrodriguez.dev",
+    "NEXT_PUBLIC_GA_MEASUREMENT_ID": "G-BVVJM5E6SM"
+  },
+  "crons": [
+    {
+      "path": "/api/blog/cron",
+      "schedule": "0 14 * * 1"
+    }
+  ]
 }

@@ -4,7 +4,7 @@ import * as React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
-import { Mail } from "lucide-react";
+import { Link2, Mail, MessageCircle } from "lucide-react";
 
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
@@ -39,7 +39,7 @@ export function Contact({ services }: { services: ServiceItem[] }) {
   const linkedInUrl = "https://www.linkedin.com/in/matias-rodriguez-sandoval-/";
   const email = "matiasrodriguezsandoval@outlook.com";
   const whatsappUrl = "https://wa.me/56979428207";
-  const profileImage = "/visuals/avatar_6.png";
+  const profileImage = "/visuals/avatar_6.webp";
   const [notice, setNotice] = React.useState<
     | { type: "success"; message: string }
     | { type: "error"; message: string }
@@ -118,9 +118,7 @@ export function Contact({ services }: { services: ServiceItem[] }) {
                     className="inline-flex items-center gap-2 text-sm text-primary underline underline-offset-4"
                     href={`mailto:${email}`}
                   >
-                    <span className="material-symbols-rounded text-[18px]">
-                      mail
-                    </span>
+                    <Mail className="h-4 w-4" aria-hidden="true" />
                     {email}
                   </a>
                   <a
@@ -129,9 +127,7 @@ export function Contact({ services }: { services: ServiceItem[] }) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <span className="material-symbols-rounded text-[18px]">
-                      chat
-                    </span>
+                    <MessageCircle className="h-4 w-4" aria-hidden="true" />
                     WhatsApp: +56 9 7942 8207
                   </a>
                 </div>
@@ -142,9 +138,7 @@ export function Contact({ services }: { services: ServiceItem[] }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <span className="material-symbols-rounded text-[18px]">
-                    link
-                  </span>
+                  <Link2 className="h-4 w-4" aria-hidden="true" />
                   {linkedInUrl.replace("https://", "")}
                 </a>
               </div>

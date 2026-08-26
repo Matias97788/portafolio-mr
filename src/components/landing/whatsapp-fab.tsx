@@ -1,11 +1,25 @@
 "use client";
 
 import * as React from "react";
-import { useReducedMotion } from "framer-motion";
+import { MessageCircle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
 const waUrl = "https://wa.me/56979428207";
+
+function usePrefersReducedMotion() {
+  const [reduceMotion, setReduceMotion] = React.useState(false);
+
+  React.useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReduceMotion(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  return reduceMotion;
+}
 
 export function WhatsAppFab({
   className,
@@ -14,7 +28,7 @@ export function WhatsAppFab({
   className?: string;
   text?: string;
 }) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
   const [value, setValue] = React.useState(reduceMotion ? text : "");
 
   React.useEffect(() => {
@@ -54,7 +68,7 @@ export function WhatsAppFab({
         aria-label="Abrir chat de WhatsApp"
       >
         <span className="grid h-10 w-10 place-items-center rounded-full bg-[#25D366]/15 text-[#25D366] ring-1 ring-[#25D366]/30">
-          <span className="material-symbols-rounded text-[22px]">chat</span>
+          <MessageCircle className="h-5 w-5" aria-hidden="true" />
         </span>
         <span className="hidden max-w-[220px] text-sm text-foreground/90 sm:block">
           <span className="inline-flex items-center gap-1">
@@ -72,4 +86,3 @@ export function WhatsAppFab({
     </div>
   );
 }
-

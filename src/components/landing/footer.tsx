@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Sparkles } from "lucide-react";
+import Link from "next/link";
+import { Link2, Sparkles } from "lucide-react";
 
 export function Footer() {
   const linkedInUrl = "https://www.linkedin.com/in/matias-rodriguez-sandoval-/";
@@ -39,13 +40,18 @@ export function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              <span className="material-symbols-rounded text-[18px]">link</span>
+              <Link2 className="h-4 w-4" aria-hidden="true" />
               LinkedIn
             </a>
           </div>
           <div className="sm:justify-self-end">
             <div className="text-sm font-semibold">Menú</div>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li>
+                <Link className="hover:text-foreground" href="/blog">
+                  Blog
+                </Link>
+              </li>
               <li>
                 <a className="hover:text-foreground" href="#proyectos">
                   Proyectos
@@ -76,8 +82,8 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <div>© Matías Rodríguez</div>
-          <div>Hecho con amor · Next.js</div>
+          <div>© {new Date().getFullYear()} Matías Rodríguez</div>
+          <div>Desarrollo web · Chile</div>
         </div>
       </div>
     </footer>

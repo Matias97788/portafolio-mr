@@ -35,6 +35,9 @@ export default async function AdminLayout({
               <Link href="/admin">Bandeja</Link>
             </Button>
             <Button asChild variant="ghost" size="sm">
+              <Link href="/admin/blog">Blog</Link>
+            </Button>
+            <Button asChild variant="ghost" size="sm">
               <Link href="/admin/config">Configuración</Link>
             </Button>
             <LogoutButton />

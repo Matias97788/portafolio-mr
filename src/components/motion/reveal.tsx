@@ -1,9 +1,38 @@
 "use client";
 
 import * as React from "react";
-import { motion, useReducedMotion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+
+function useInView(margin = "-80px") {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisible(true);
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setVisible(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: margin },
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, [margin]);
+
+  return { ref, visible };
+}
 
 export function Reveal({
   children,
@@ -14,22 +43,20 @@ export function Reveal({
   className?: string;
   delay?: number;
 }) {
-  const reduceMotion = useReducedMotion();
-
-  if (reduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
+  const { ref, visible } = useInView();
 
   return (
-    <motion.div
-      className={cn(className)}
-      initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: false, margin: "-80px" }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
+    <div
+      ref={ref}
+      className={cn(
+        "transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+        visible ? "translate-y-0 opacity-100" : "translate-y-[18px] opacity-0",
+        className,
+      )}
+      style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -40,25 +67,15 @@ export function Stagger({
   children: React.ReactNode;
   className?: string;
 }) {
-  const reduceMotion = useReducedMotion();
-
-  if (reduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
+  const { ref, visible } = useInView();
 
   return (
-    <motion.div
-      className={cn(className)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: false, margin: "-80px" }}
-      variants={{
-        hidden: {},
-        show: { transition: { staggerChildren: 0.08 } },
-      }}
+    <div
+      ref={ref}
+      className={cn(visible ? "stagger-visible" : "stagger-hidden", className)}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -69,26 +86,5 @@ export function StaggerItem({
   children: React.ReactNode;
   className?: string;
 }) {
-  const reduceMotion = useReducedMotion();
-
-  if (reduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
-
-  return (
-    <motion.div
-      className={cn(className)}
-      variants={{
-        hidden: { opacity: 0, y: 14, filter: "blur(6px)" },
-        show: {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
-        },
-      }}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className={cn("stagger-item", className)}>{children}</div>;
 }

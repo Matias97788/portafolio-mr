@@ -4,4 +4,4 @@ export const SITE_URL =
 export const SITE_NAME = "Matías Rodríguez";
 
 export const SITE_DESCRIPTION =
-  "Desarrollo Web, Apps móviles, E-commerce, automatización y consultoría digital en Chile. Ingeniería aplicada a conversión, velocidad y crecimiento.";
+  "Desarrollo web, apps móviles, e-commerce, automatización y consultoría digital en Chile. Next.js, Shopify y WordPress con foco en conversión, velocidad y crecimiento.";

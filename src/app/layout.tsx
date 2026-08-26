@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
-import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
+import { Geist } from "next/font/google";
 
-import { Analytics } from "@/components/analytics";
+import { DeferredAnalytics } from "@/components/deferred-analytics";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -41,11 +37,16 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/visuals/favicon.png", type: "image/png", sizes: "32x32" },
-      { url: "/visuals/favicon.png", type: "image/png", sizes: "16x16" },
+      { url: "/visuals/favicon-32.png", type: "image/png", sizes: "32x32" },
     ],
-    apple: [{ url: "/visuals/favicon.png", type: "image/png", sizes: "180x180" }],
-    shortcut: "/visuals/favicon.png",
+    apple: [
+      {
+        url: "/visuals/apple-touch-icon.png",
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
+    shortcut: "/visuals/favicon-32.png",
   },
   manifest: "/site.webmanifest",
   openGraph: {
@@ -55,11 +56,20 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} | Ingeniería que escala negocios`,
     description: SITE_DESCRIPTION,
     siteName: SITE_NAME,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — Ingeniería que escala negocios`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} | Ingeniería que escala negocios`,
     description: SITE_DESCRIPTION,
+    images: ["/twitter-image"],
   },
   robots: {
     index: true,
@@ -69,6 +79,9 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export default function RootLayout({
@@ -77,24 +90,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="es" className={`${geistSans.variable} h-full antialiased`}>
       <head>
         <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0"
+          rel="preload"
+          href="/visuals/avatar_1.webp"
+          as="image"
+          type="image/webp"
+          fetchPriority="high"
         />
       </head>
       <body className="min-h-full flex flex-col">
         {children}
-        <Analytics />
-        <VercelAnalytics />
-        <Script
-          src="https://cdn.lordicon.com/lordicon.js"
-          strategy="afterInteractive"
-        />
+        <DeferredAnalytics />
       </body>
     </html>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import {
   Atom,
@@ -53,9 +52,15 @@ function ToolChip({
 }
 
 export function ToolsCarousel() {
-  const reduceMotion = useReducedMotion();
   const content = React.useMemo(() => [...tools, ...tools], []);
   const toolsImage = "/visuals/tools.svg";
+  const [reduceMotion, setReduceMotion] = React.useState(true);
+
+  React.useEffect(() => {
+    setReduceMotion(
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    );
+  }, []);
 
   return (
     <section id="herramientas" className="border-b border-border">
@@ -78,6 +83,7 @@ export function ToolsCarousel() {
                 fill
                 sizes="128px"
                 className="object-cover"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-background/70 via-background/20 to-transparent">
                 <div className="pointer-events-none absolute right-2 top-2 rounded-full border border-border bg-background/50 p-1.5 text-foreground/90 backdrop-blur">
@@ -99,28 +105,16 @@ export function ToolsCarousel() {
           />
 
           <div className="relative py-6">
-            <motion.div
+            <div
               className={cn(
                 "flex w-max gap-3 px-6",
-                reduceMotion ? "flex-wrap justify-center" : "",
+                reduceMotion ? "flex-wrap justify-center" : "animate-marquee",
               )}
-              animate={
-                reduceMotion
-                  ? undefined
-                  : {
-                      x: ["0%", "-50%"],
-                    }
-              }
-              transition={
-                reduceMotion
-                  ? undefined
-                  : { duration: 24, repeat: Infinity, ease: "linear" }
-              }
             >
               {content.map((t, i) => (
                 <ToolChip key={`${t.label}-${i}`} label={t.label} Icon={t.Icon} />
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

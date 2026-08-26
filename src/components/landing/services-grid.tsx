@@ -29,21 +29,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { LordIcon } from "@/components/ui/lord-icon";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { ServiceItem } from "@/lib/types";
 
 export function ServicesGrid({ services }: { services: ServiceItem[] }) {
   const servicesImage = "/visuals/services.svg";
-  const serviceLordicons = React.useMemo(
-    () => ({
-      "desarrollo-web": "https://cdn.lordicon.com/lbjtvqiv.json",
-      ecommerce: "https://cdn.lordicon.com/auvicynv.json",
-      "apps-moviles": "https://cdn.lordicon.com/uvextprq.json",
-      automatizacion: "https://cdn.lordicon.com/sihdhmit.json",
-      growth: "https://cdn.lordicon.com/rahcoaeu.json",
-      gestion: "https://cdn.lordicon.com/wloilxuq.json",
-    }),
+  const serviceIcons = React.useMemo(
+    () =>
+      ({
+        "desarrollo-web": Globe,
+        ecommerce: Store,
+        "apps-moviles": Smartphone,
+        automatizacion: Workflow,
+        growth: Megaphone,
+        gestion: Layers3,
+      }) as const,
     [],
   );
   const projectTabs = React.useMemo(
@@ -292,13 +292,13 @@ export function ServicesGrid({ services }: { services: ServiceItem[] }) {
                 <Card className="group h-full transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:opacity-95 hover:shadow-[0_22px_60px_-30px_rgba(0,0,0,0.85)]">
                   <CardHeader>
                     <div className="mb-2 grid place-items-start">
-                      {serviceLordicons[s.id] ? (
-                        <LordIcon
-                          src={serviceLordicons[s.id]}
-                          className="opacity-90 transition-opacity group-hover:opacity-100"
-                          size={46}
-                          trigger="loop-on-hover"
-                        />
+                      {serviceIcons[s.id as keyof typeof serviceIcons] ? (
+                        <span className="grid h-12 w-12 place-items-center rounded-[var(--radius-lg)] border border-border bg-muted/60 text-primary transition-opacity group-hover:opacity-100">
+                          {React.createElement(
+                            serviceIcons[s.id as keyof typeof serviceIcons],
+                            { className: "h-6 w-6", "aria-hidden": true },
+                          )}
+                        </span>
                       ) : null}
                     </div>
                     <CardTitle>{s.title}</CardTitle>

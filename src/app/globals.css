@@ -31,7 +31,6 @@
   --color-ring: hsl(var(--ring));
   --radius-lg: var(--radius);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 html {
@@ -44,13 +43,68 @@ html {
   }
 }
 
-section[id] {
-  scroll-margin-top: 88px;
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-.material-symbols-rounded {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-  line-height: 1;
+.animate-marquee {
+  animation: marquee 24s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+.stagger-hidden > .stagger-item {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.stagger-visible > .stagger-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stagger-visible > .stagger-item:nth-child(1) {
+  transition-delay: 0ms;
+}
+.stagger-visible > .stagger-item:nth-child(2) {
+  transition-delay: 80ms;
+}
+.stagger-visible > .stagger-item:nth-child(3) {
+  transition-delay: 160ms;
+}
+.stagger-visible > .stagger-item:nth-child(4) {
+  transition-delay: 240ms;
+}
+.stagger-visible > .stagger-item:nth-child(5) {
+  transition-delay: 320ms;
+}
+.stagger-visible > .stagger-item:nth-child(6) {
+  transition-delay: 400ms;
+}
+.stagger-visible > .stagger-item:nth-child(7) {
+  transition-delay: 480ms;
+}
+.stagger-visible > .stagger-item:nth-child(8) {
+  transition-delay: 560ms;
+}
+.stagger-visible > .stagger-item:nth-child(9) {
+  transition-delay: 640ms;
+}
+
+section[id] {
+  scroll-margin-top: 88px;
 }
 
 body {

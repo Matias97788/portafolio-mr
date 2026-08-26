@@ -8,10 +8,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#quien-soy", label: "Quién Soy" },
-  { href: "#herramientas", label: "Herramientas" },
+  { href: "/blog", label: "Blog", external: true },
+  { href: "#proyectos", label: "Proyectos", external: false },
+  { href: "#servicios", label: "Servicios", external: false },
+  { href: "#quien-soy", label: "Quién Soy", external: false },
+  { href: "#herramientas", label: "Herramientas", external: false },
 ] as const;
 
 export function NavBar() {
@@ -35,15 +36,25 @@ export function NavBar() {
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="transition-colors hover:text-foreground"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) =>
+            l.external ? (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="transition-colors hover:text-foreground"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                className="transition-colors hover:text-foreground"
+              >
+                {l.label}
+              </a>
+            ),
+          )}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -89,16 +100,27 @@ export function NavBar() {
           )}
         >
           <div className="p-2">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="flex items-center justify-between rounded-[var(--radius-lg)] px-3 py-3 text-sm text-foreground/90 hover:bg-muted/60"
-                onClick={() => setOpen(false)}
-              >
-                <span>{l.label}</span>
-              </a>
-            ))}
+            {links.map((l) =>
+              l.external ? (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="flex items-center justify-between rounded-[var(--radius-lg)] px-3 py-3 text-sm text-foreground/90 hover:bg-muted/60"
+                  onClick={() => setOpen(false)}
+                >
+                  <span>{l.label}</span>
+                </Link>
+              ) : (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="flex items-center justify-between rounded-[var(--radius-lg)] px-3 py-3 text-sm text-foreground/90 hover:bg-muted/60"
+                  onClick={() => setOpen(false)}
+                >
+                  <span>{l.label}</span>
+                </a>
+              ),
+            )}
             <div className="mt-2 border-t border-border pt-2">
               <Button asChild size="lg" className="w-full">
                 <a href="#contacto" onClick={() => setOpen(false)}>

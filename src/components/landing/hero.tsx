@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export function Hero({ title, subtitle }: { title: string; subtitle: string }) {
   const heroImage = "/visuals/hero.svg";
-  const avatarImage = "/visuals/avatar_1.png";
+  const avatarImage = "/visuals/avatar_1.webp";
 
   return (
     <section
@@ -42,7 +42,7 @@ export function Hero({ title, subtitle }: { title: string; subtitle: string }) {
               fill
               sizes="(min-width: 1024px) 900px, 100vw"
               className="object-cover"
-              priority
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/55 to-background" />
           </div>
@@ -81,9 +81,10 @@ export function Hero({ title, subtitle }: { title: string; subtitle: string }) {
                   alt="Matías Rodríguez, ingeniero en informática"
                   src={avatarImage}
                   fill
-                  sizes="(min-width: 1024px) 420px, 100vw"
+                  sizes="(max-width: 768px) 90vw, (min-width: 1024px) 420px, 50vw"
                   className="object-cover"
                   priority
+                  unoptimized
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-background/70 via-transparent to-transparent" />
               </div>
