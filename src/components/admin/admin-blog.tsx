@@ -14,14 +14,49 @@ type Notice =
   | { type: "error"; message: string }
   | null;
 
+function siteOrigin() {
+  if (typeof window !== "undefined") return window.location.origin;
+  return "https://matiasrodriguez.dev";
+}
+
+async function shareOnLinkedIn(input: {
+  text: string;
+  url: string;
+}) {
+  const fullText = `${input.text.trim()}\n\n${input.url}`.trim();
+
+  try {
+    await navigator.clipboard.writeText(fullText);
+  } catch {
+    // Fallback for older browsers / denied clipboard
+    const area = document.createElement("textarea");
+    area.value = fullText;
+    area.setAttribute("readonly", "");
+    area.style.position = "fixed";
+    area.style.left = "-9999px";
+    document.body.appendChild(area);
+    area.select();
+    document.execCommand("copy");
+    document.body.removeChild(area);
+  }
+
+  // Opens LinkedIn composer in a new tab (session of the logged-in user).
+  // Text is also in clipboard so you can paste if LinkedIn ignores the query.
+  const composeUrl = `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(fullText)}`;
+  window.open(composeUrl, "_blank", "noopener,noreferrer");
+}
+
 export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
   const [topic, setTopic] = React.useState("");
   const [draft, setDraft] = React.useState<GeneratedBlogDraft | null>(null);
   const [posts, setPosts] = React.useState(initialPosts);
-  const [loading, setLoading] = React.useState<"generate" | "publish" | "linkedin" | null>(
+  const [loading, setLoading] = React.useState<"generate" | "publish" | null>(
     null,
   );
   const [notice, setNotice] = React.useState<Notice>(null);
+  const [lastPublishedUrl, setLastPublishedUrl] = React.useState<string | null>(
+    null,
+  );
 
   const generate = async () => {
     setLoading("generate");
@@ -43,7 +78,11 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
     }
 
     setDraft(data.draft as GeneratedBlogDraft);
-    setNotice({ type: "success", message: "Borrador generado. Revisa y publica." });
+    setLastPublishedUrl(null);
+    setNotice({
+      type: "success",
+      message: "Borrador generado. Revisa y publica.",
+    });
   };
 
   const publish = async () => {
@@ -66,6 +105,13 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
       return;
     }
 
+    const url =
+      typeof data.url === "string"
+        ? data.url.startsWith("http")
+          ? data.url
+          : `${siteOrigin()}${data.url}`
+        : `${siteOrigin()}/blog/${data.post.slug}`;
+
     setPosts((current) => [
       {
         slug: data.post.slug,
@@ -78,35 +124,39 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
       },
       ...current.filter((p) => p.slug !== data.post.slug),
     ]);
+    setLastPublishedUrl(url);
 
     setNotice({
       type: "success",
-      message: `${data.note} URL: ${data.url}`,
+      message: `${data.note} URL: ${url}`,
     });
   };
 
-  const publishLinkedIn = async (slug: string) => {
-    setLoading("linkedin");
-    setNotice(null);
-    const res = await fetch("/api/blog/linkedin", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ slug }),
-    });
-    const data = await res.json().catch(() => null);
-    setLoading(null);
+  const openLinkedInForPost = async (post: BlogPostMeta) => {
+    const url = `${siteOrigin()}/blog/${post.slug}`;
+    const text =
+      post.linkedinText?.trim() ||
+      `${post.title}\n\n${post.description ?? ""}`.trim();
 
-    if (!res.ok) {
-      setNotice({
-        type: "error",
-        message: data?.error ?? "No se pudo publicar en LinkedIn",
-      });
-      return;
-    }
-
+    await shareOnLinkedIn({ text, url });
     setNotice({
       type: "success",
-      message: `Publicado en LinkedIn. Post ID: ${data.linkedinPostId}`,
+      message:
+        "Texto copiado. Se abrió LinkedIn: pega el post (Ctrl/Cmd+V) y publica.",
+    });
+  };
+
+  const openLinkedInForDraft = async () => {
+    if (!draft) return;
+    const url =
+      lastPublishedUrl ??
+      `${siteOrigin()}/blog/${draft.slug || "borrador"}`;
+
+    await shareOnLinkedIn({ text: draft.linkedinText, url });
+    setNotice({
+      type: "success",
+      message:
+        "Texto copiado. Se abrió LinkedIn: pega el post (Ctrl/Cmd+V) y publica.",
     });
   };
 
@@ -115,17 +165,16 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">Blog automático</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Genera artículos con IA (Groq/Gemini gratis), publícalos en la web y
-          compártelos en LinkedIn.
+          Genera con IA, publica en la web y comparte en LinkedIn desde tu
+          sesión (sin API de LinkedIn).
         </p>
         <ul className="mt-3 list-disc space-y-1 pl-5 text-xs text-muted-foreground">
           <li>
-            IA: configura <code>GROQ_API_KEY</code> en Vercel (gratis en{" "}
-            console.groq.com) o <code>GEMINI_API_KEY</code>.
+            IA: <code>GROQ_API_KEY</code> en Vercel (gratis en console.groq.com).
           </li>
           <li>
-            LinkedIn: <code>LINKEDIN_ACCESS_TOKEN</code> +{" "}
-            <code>LINKEDIN_AUTHOR_URN</code> (app en linkedin.com/developers).
+            LinkedIn: el botón abre LinkedIn con el texto copiado; solo pegas y
+            publicas.
           </li>
         </ul>
       </div>
@@ -169,7 +218,9 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
               <Textarea
                 id="description"
                 value={draft.description}
-                onChange={(e) => setDraft({ ...draft, description: e.target.value })}
+                onChange={(e) =>
+                  setDraft({ ...draft, description: e.target.value })
+                }
                 rows={2}
               />
             </div>
@@ -187,7 +238,9 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
               <Textarea
                 id="linkedin"
                 value={draft.linkedinText}
-                onChange={(e) => setDraft({ ...draft, linkedinText: e.target.value })}
+                onChange={(e) =>
+                  setDraft({ ...draft, linkedinText: e.target.value })
+                }
                 rows={6}
               />
             </div>
@@ -195,7 +248,32 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
               <Button onClick={publish} disabled={loading === "publish"}>
                 {loading === "publish" ? "Publicando..." : "Publicar en web"}
               </Button>
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={openLinkedInForDraft}
+              >
+                Abrir LinkedIn
+              </Button>
             </div>
+            {lastPublishedUrl ? (
+              <p className="text-xs text-muted-foreground">
+                Publicado en{" "}
+                <a
+                  className="underline underline-offset-4"
+                  href={lastPublishedUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {lastPublishedUrl}
+                </a>
+                . Usa “Abrir LinkedIn” para pegar y publicar el post.
+              </p>
+            ) : (
+              <p className="text-xs text-muted-foreground">
+                Recomendado: publica primero en la web y luego abre LinkedIn.
+              </p>
+            )}
           </CardContent>
         </Card>
       ) : null}
@@ -215,18 +293,24 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
               >
                 <div>
                   <div className="font-medium">{post.title}</div>
-                  <div className="text-xs text-muted-foreground">/blog/{post.slug}</div>
+                  <div className="text-xs text-muted-foreground">
+                    /blog/{post.slug}
+                  </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   <Button asChild variant="outline" size="sm">
-                    <a href={`/blog/${post.slug}`} target="_blank" rel="noreferrer">
+                    <a
+                      href={`/blog/${post.slug}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       Ver
                     </a>
                   </Button>
                   <Button
                     size="sm"
-                    onClick={() => publishLinkedIn(post.slug)}
-                    disabled={loading === "linkedin"}
+                    variant="secondary"
+                    onClick={() => openLinkedInForPost(post)}
                   >
                     LinkedIn
                   </Button>
@@ -240,7 +324,9 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
       {notice ? (
         <p
           className={
-            notice.type === "success" ? "text-sm text-green-400" : "text-sm text-red-400"
+            notice.type === "success"
+              ? "text-sm text-green-400"
+              : "text-sm text-red-400"
           }
         >
           {notice.message}
