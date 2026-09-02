@@ -1,6 +1,8 @@
 ---
 title: "Cuándo migrar de WordPress a Next.js (y cuándo no)"
 description: "Guía para pymes en Chile: señales de que WordPress ya no alcanza y cuándo Next.js aporta velocidad, SEO y control real."
+cover: "/blog/cuando-migrar-wordpress-a-nextjs.webp"
+coverAlt: "Ilustración del artículo"
 publishedAt: "2026-08-28T12:00:00.000Z"
 tags: ["wordpress", "nextjs", "migracion", "chile"]
 status: published

@@ -1,6 +1,8 @@
 ---
 title: "Shopify vs WooCommerce en Chile: cuál conviene a tu pyme"
 description: "Comparación práctica de Shopify y WooCommerce para vender en Chile: costos, pagos, operación y cuándo elegir cada plataforma."
+cover: "/blog/shopify-vs-woocommerce-chile.webp"
+coverAlt: "Ilustración del artículo"
 publishedAt: "2026-08-18T12:00:00.000Z"
 tags: ["ecommerce", "shopify", "woocommerce", "chile"]
 status: published

@@ -4,10 +4,16 @@ import path from "path";
 import matter from "gray-matter";
 
 import type { BlogPost, BlogPostMeta } from "@/lib/blog/types";
+import { defaultCoverForSlug } from "@/lib/blog/types";
 
 const blogDir = path.join(process.cwd(), "content", "blog");
 
 function toMeta(slug: string, data: Record<string, unknown>): BlogPostMeta {
+  const coverFromFm =
+    typeof data.cover === "string" && data.cover.trim()
+      ? data.cover.trim()
+      : undefined;
+
   return {
     slug,
     title: String(data.title ?? slug),
@@ -15,6 +21,11 @@ function toMeta(slug: string, data: Record<string, unknown>): BlogPostMeta {
     publishedAt: String(data.publishedAt ?? new Date().toISOString()),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     status: data.status === "draft" ? "draft" : "published",
+    cover: coverFromFm ?? defaultCoverForSlug(slug),
+    coverAlt:
+      typeof data.coverAlt === "string"
+        ? data.coverAlt
+        : `Portada: ${String(data.title ?? slug)}`,
     linkedinText:
       typeof data.linkedinText === "string" ? data.linkedinText : undefined,
     linkedinPostId:
@@ -82,6 +93,8 @@ export function serializeBlogPost(post: BlogPost) {
     publishedAt: post.publishedAt,
     tags: post.tags,
     status: post.status,
+    ...(post.cover ? { cover: post.cover } : {}),
+    ...(post.coverAlt ? { coverAlt: post.coverAlt } : {}),
     ...(post.linkedinText ? { linkedinText: post.linkedinText } : {}),
     ...(post.linkedinPostId ? { linkedinPostId: post.linkedinPostId } : {}),
   };

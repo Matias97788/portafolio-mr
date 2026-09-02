@@ -1,6 +1,8 @@
 ---
 title: "Errores de SEO técnico en Next.js que frenan el tráfico orgánico"
 description: "Checklist de SEO técnico en Next.js: metadata, sitemap, canonical, schema y Core Web Vitals para sitios de servicios en Chile."
+cover: "/blog/errores-seo-tecnico-nextjs.webp"
+coverAlt: "Ilustración del artículo"
 publishedAt: "2026-08-25T12:00:00.000Z"
 tags: ["seo", "nextjs", "tecnico", "chile"]
 status: published

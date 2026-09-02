@@ -1,6 +1,8 @@
 ---
 title: "Core Web Vitals en Chile: por qué tu sitio pierde clientes en móvil"
 description: "Guía práctica para mejorar LCP, INP y CLS en sitios de pymes chilenas y convertir más visitas en leads."
+cover: "/blog/core-web-vitals-chile.webp"
+coverAlt: "Ilustración del artículo"
 publishedAt: "2026-07-20T12:00:00.000Z"
 tags: ["performance", "seo", "chile"]
 status: published

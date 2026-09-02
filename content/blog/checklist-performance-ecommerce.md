@@ -1,6 +1,8 @@
 ---
 title: "Checklist de performance para ecommerce en Chile"
 description: "Mejora conversión en Shopify o WooCommerce: imágenes, checkout móvil, scripts de terceros y métricas que sí importan."
+cover: "/blog/checklist-performance-ecommerce.webp"
+coverAlt: "Ilustración del artículo"
 publishedAt: "2026-09-01T12:00:00.000Z"
 tags: ["ecommerce", "performance", "conversion", "chile"]
 status: published

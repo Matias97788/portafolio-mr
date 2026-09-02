@@ -1,6 +1,8 @@
 ---
 title: "Automatización para pymes: de leads manuales a pipeline medible"
 description: "Cómo conectar formularios, CRM y alertas para responder más rápido y no perder oportunidades comerciales."
+cover: "/blog/automatizacion-leads-pymes.webp"
+coverAlt: "Ilustración del artículo"
 publishedAt: "2026-07-13T12:00:00.000Z"
 tags: ["automatizacion", "crm", "leads"]
 status: published
