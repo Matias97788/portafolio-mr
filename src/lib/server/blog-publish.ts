@@ -57,7 +57,24 @@ export async function publishBlogDraft(
     };
   }
 
-  await saveBlogPostLocally(post);
+  // On Vercel the filesystem is ephemeral/read-only for app content.
+  if (process.env.VERCEL) {
+    return {
+      ok: false as const,
+      error:
+        "Falta GITHUB_TOKEN en Vercel. Sin ese token no se puede publicar el blog en producción.",
+      post,
+    };
+  }
+
+  try {
+    await saveBlogPostLocally(post);
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : "No se pudo guardar el archivo";
+    return { ok: false as const, error: message, post };
+  }
+
   return {
     ok: true as const,
     post,
@@ -66,7 +83,10 @@ export async function publishBlogDraft(
   };
 }
 
-export async function markLinkedInPublished(slug: string, linkedinPostId: string) {
+export async function markLinkedInPublished(
+  slug: string,
+  linkedinPostId: string,
+) {
   const post = await getBlogPost(slug, { includeDrafts: true });
   if (!post) return { ok: false as const, error: "Post no encontrado" };
 
@@ -84,6 +104,13 @@ export async function markLinkedInPublished(slug: string, linkedinPostId: string
     ]);
     if (!result.ok) return { ok: false as const, error: result.error };
     return { ok: true as const };
+  }
+
+  if (process.env.VERCEL) {
+    return {
+      ok: false as const,
+      error: "Falta GITHUB_TOKEN en Vercel para actualizar el post.",
+    };
   }
 
   await saveBlogPostLocally(next);

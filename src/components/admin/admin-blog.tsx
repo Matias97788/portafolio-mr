@@ -108,7 +108,9 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
     if (!res.ok) {
       setNotice({
         type: "error",
-        message: data?.error ?? "No se pudo publicar",
+        message:
+          data?.error ??
+          "No se pudo publicar. Revisa GITHUB_TOKEN en Vercel o vuelve a intentar.",
       });
       return;
     }
@@ -181,7 +183,11 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
             IA: <code>GROQ_API_KEY</code> en Vercel (gratis en console.groq.com).
           </li>
           <li>
-            LinkedIn: el botón abre LinkedIn con el texto copiado; solo pegas y
+            Publicar en web: requiere <code>GITHUB_TOKEN</code> (permiso{" "}
+            <code>contents:write</code>) en Vercel.
+          </li>
+          <li>
+            LinkedIn: el botón abre LinkedIn con el texto copiado; pegas y
             publicas.
           </li>
         </ul>
