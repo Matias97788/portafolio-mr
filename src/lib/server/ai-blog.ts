@@ -49,9 +49,10 @@ Requisitos:
 - Tono profesional, claro, sin relleno.
 - 700 a 950 palabras en markdown.
 - Incluye H2 y H3.
-- Incluye una lista con viñetas y un bloque de conclusión con CTA suave hacia cotizar en matiasrodriguez.dev.
+- Incluye una lista con viñetas y un bloque de conclusión con CTA suave hacia cotizar.
+- Incluye 1–2 enlaces markdown internos a páginas relevantes como /servicios/desarrollo-web, /servicios/ecommerce, /servicios/automatizacion, /servicios/growth o /blog.
 - No inventes métricas ni clientes falsos.
-- Enfócate en valor práctico para dueños de negocio y equipos de marketing.
+- Enfócate en valor práctico para dueños de negocio y equipos de marketing en Chile.
 
 Devuelve SOLO JSON válido con esta forma:
 {

@@ -4,4 +4,16 @@ export const SITE_URL =
 export const SITE_NAME = "Matías Rodríguez";
 
 export const SITE_DESCRIPTION =
-  "Desarrollo web, apps móviles, e-commerce, automatización y consultoría digital en Chile. Next.js, Shopify y WordPress con foco en conversión, velocidad y crecimiento.";
+  "Desarrollo web, ecommerce Shopify/WooCommerce, apps y automatización para pymes en Santiago y Chile. Next.js, SEO técnico y conversión medible.";
+
+export const SITE_KEYWORDS = [
+  "desarrollo web Chile",
+  "desarrollo web Santiago",
+  "tienda Shopify Chile",
+  "WooCommerce Chile",
+  "automatización pymes Chile",
+  "SEO técnico Chile",
+  "Next.js",
+  "consultoría digital Chile",
+  "Matías Rodríguez",
+];

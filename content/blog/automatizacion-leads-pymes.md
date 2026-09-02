@@ -54,4 +54,4 @@ Estados: nuevo, contactado, propuesta enviada, cerrado. Con eso ya puedes medir 
 
 ## Conclusión
 
-Automatizar bien te da velocidad comercial. Si quieres diseñar un flujo de leads para tu negocio (sin sobreingeniería), revisa servicios y cotiza en [matiasrodriguez.dev](https://matiasrodriguez.dev).
+Automatizar bien te da velocidad comercial. Si quieres diseñar un flujo de leads para tu negocio (sin sobreingeniería), revisa [automatización de procesos](/servicios/automatizacion) o [cotiza aquí](/#contacto).

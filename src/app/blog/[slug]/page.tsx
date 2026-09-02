@@ -88,6 +88,21 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="mt-8">
           <PostContent content={post.content} />
         </div>
+
+        <section className="mt-12 rounded-[var(--radius-lg)] border border-border bg-card/50 p-6">
+          <h2 className="text-lg font-semibold">¿Quieres aplicar esto en tu negocio?</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Revisa los{" "}
+            <Link href="/servicios" className="text-primary underline underline-offset-4">
+              servicios
+            </Link>{" "}
+            o{" "}
+            <Link href="/#contacto" className="text-primary underline underline-offset-4">
+              cotiza
+            </Link>{" "}
+            con alcance y tiempos claros.
+          </p>
+        </section>
       </main>
 
       <script

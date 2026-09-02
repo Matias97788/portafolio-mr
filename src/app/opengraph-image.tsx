@@ -38,10 +38,10 @@ export default function OpenGraphImage() {
         >
           <div style={{ fontSize: 28, opacity: 0.9 }}>Matías Rodríguez</div>
           <div style={{ marginTop: 18, fontSize: 72, fontWeight: 650, lineHeight: 1.05 }}>
-            Ingeniería que escala negocios
+            Desarrollo web y automatización en Chile
           </div>
           <div style={{ marginTop: 18, fontSize: 28, opacity: 0.85 }}>
-            Web · Mobile · E-commerce · Automatización · Consultoría
+            Next.js · Shopify · SEO · Apps · Procesos
           </div>
           <div
             style={{

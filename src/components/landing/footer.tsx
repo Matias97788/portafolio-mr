@@ -32,7 +32,22 @@ export function Footer() {
           <div>
             <div className="text-sm font-semibold">Matías Rodríguez</div>
             <div className="mt-2 text-sm text-muted-foreground">
-              Ingeniería en Informática · Desarrollo & Consultoría Digital
+              Desarrollo web, ecommerce y automatización · Santiago, Chile
+            </div>
+            <div className="mt-3 space-y-1 text-sm text-muted-foreground">
+              <div>
+                <a className="hover:text-foreground" href="tel:+56979428207">
+                  +56 9 7942 8207
+                </a>
+              </div>
+              <div>
+                <a
+                  className="hover:text-foreground"
+                  href="mailto:matiasrodriguezsandoval@outlook.com"
+                >
+                  matiasrodriguezsandoval@outlook.com
+                </a>
+              </div>
             </div>
             <a
               className="mt-4 inline-flex items-center gap-2 text-sm text-primary underline underline-offset-4"
@@ -48,6 +63,11 @@ export function Footer() {
             <div className="text-sm font-semibold">Menú</div>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li>
+                <Link className="hover:text-foreground" href="/servicios">
+                  Servicios
+                </Link>
+              </li>
+              <li>
                 <Link className="hover:text-foreground" href="/blog">
                   Blog
                 </Link>
@@ -58,18 +78,13 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a className="hover:text-foreground" href="#servicios">
-                  Servicios
-                </a>
-              </li>
-              <li>
                 <a className="hover:text-foreground" href="#quien-soy">
                   Quién Soy
                 </a>
               </li>
               <li>
-                <a className="hover:text-foreground" href="#herramientas">
-                  Herramientas
+                <a className="hover:text-foreground" href="#faq">
+                  FAQ
                 </a>
               </li>
               <li>

@@ -38,9 +38,14 @@ const WhatsAppFab = dynamic(() =>
   import("@/components/landing/whatsapp-fab").then((m) => m.WhatsAppFab),
 );
 
+const HomeFaq = dynamic(() =>
+  import("@/components/landing/home-faq").then((m) => m.HomeFaq),
+);
+
 export default async function Home() {
   const config = await getSiteConfig();
   const linkedInUrl = "https://www.linkedin.com/in/matias-rodriguez-sandoval-/";
+  const phone = "+56979428207";
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -50,7 +55,7 @@ export default async function Home() {
         url: SITE_URL,
         name: "Matías Rodríguez",
         description:
-          "Desarrollo web, ecommerce, apps y automatización para pymes en Chile.",
+          "Desarrollo web, ecommerce, apps y automatización para pymes en Santiago y Chile.",
         inLanguage: "es-CL",
         publisher: { "@id": `${SITE_URL}/#person` },
       },
@@ -61,9 +66,12 @@ export default async function Home() {
         jobTitle: "Ingeniero en Informática",
         url: SITE_URL,
         email: "mailto:matiasrodriguezsandoval@outlook.com",
+        telephone: phone,
         image: `${SITE_URL}/visuals/avatar_1.webp`,
         address: {
           "@type": "PostalAddress",
+          addressLocality: "Santiago",
+          addressRegion: "Región Metropolitana",
           addressCountry: "CL",
         },
         sameAs: [linkedInUrl],
@@ -83,10 +91,17 @@ export default async function Home() {
         url: SITE_URL,
         image: `${SITE_URL}/opengraph-image`,
         priceRange: "$$",
-        areaServed: {
-          "@type": "Country",
-          name: "Chile",
+        telephone: phone,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Santiago",
+          addressRegion: "Región Metropolitana",
+          addressCountry: "CL",
         },
+        areaServed: [
+          { "@type": "City", name: "Santiago" },
+          { "@type": "Country", name: "Chile" },
+        ],
         founder: { "@id": `${SITE_URL}/#person` },
         sameAs: [linkedInUrl],
         hasOfferCatalog: {
@@ -95,10 +110,12 @@ export default async function Home() {
           itemListElement: config.services.map((s, index) => ({
             "@type": "Offer",
             position: index + 1,
+            url: `${SITE_URL}/servicios/${s.id}`,
             itemOffered: {
               "@type": "Service",
               name: s.title,
               description: s.description,
+              url: `${SITE_URL}/servicios/${s.id}`,
             },
           })),
         },
@@ -131,6 +148,9 @@ export default async function Home() {
         </LazySection>
         <LazySection minHeight={360}>
           <About title={config.aboutTitle} body={config.aboutBody} />
+        </LazySection>
+        <LazySection minHeight={320}>
+          <HomeFaq />
         </LazySection>
         <LazySection minHeight={480}>
           <Contact services={config.services} />

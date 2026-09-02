@@ -10,12 +10,12 @@ const configPath = path.join(dataDir, "config.json");
 const leadsPath = path.join(dataDir, "leads.json");
 
 const defaultConfig: SiteConfig = {
-  heroTitle: "Ingeniería que escala negocios",
+  heroTitle: "Desarrollo web y automatización para pymes en Chile",
   heroSubtitle:
-    "Desarrollo Full Stack enfocado en conversión y performance. 5+ años de experiencia y 20+ proyectos trabajados: Web, E-commerce, automatización y consultoría digital.",
+    "Next.js, Shopify, apps y procesos digitales con foco en conversión, velocidad y leads. Trabajo remoto desde Santiago para equipos en todo Chile.",
   aboutTitle: "Quién soy",
   aboutBody:
-    "Soy Matías Rodríguez, Ingeniero en Informática y Especialista Full Stack & E-commerce. Trabajo con WordPress, Shopify y performance web, con foco en optimizar procesos y conversión. Me gusta construir soluciones claras, escalables y medibles, desde la implementación hasta la optimización.",
+    "Soy Matías Rodríguez, Ingeniero en Informática en Santiago, Chile. Diseño y construyo productos digitales con mentalidad de ingeniería: arquitectura clara, código mantenible y decisiones guiadas por datos. Ayudo a pymes a tener web, ecommerce y automatización que realmente generan contactos y ventas.",
   services: [
     {
       id: "desarrollo-web",

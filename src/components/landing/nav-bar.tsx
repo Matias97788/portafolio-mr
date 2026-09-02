@@ -8,9 +8,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const links = [
+  { href: "/servicios", label: "Servicios", external: true },
   { href: "/blog", label: "Blog", external: true },
   { href: "#proyectos", label: "Proyectos", external: false },
-  { href: "#servicios", label: "Servicios", external: false },
   { href: "#quien-soy", label: "Quién Soy", external: false },
   { href: "#herramientas", label: "Herramientas", external: false },
 ] as const;
@@ -21,7 +21,7 @@ export function NavBar() {
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/70 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-3">
-        <Link href="#top" className="group inline-flex items-center gap-3">
+        <Link href="/" className="group inline-flex items-center gap-3">
           <div className="grid h-9 w-9 place-items-center rounded-[var(--radius-lg)] border border-border bg-card text-sm font-semibold">
             MR
           </div>
@@ -30,7 +30,7 @@ export function NavBar() {
               Matías Rodríguez
             </div>
             <div className="text-xs text-muted-foreground">
-              Ingeniería en Informática
+              Desarrollo web · Chile
             </div>
           </div>
         </Link>

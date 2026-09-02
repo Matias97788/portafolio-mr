@@ -54,4 +54,4 @@ Después de mejorar performance, revisa:
 
 ## Conclusión
 
-Un sitio rápido no garantiza más ventas por sí solo, pero un sitio lento sí te hace perder oportunidades todos los días. Si quieres auditar tu web y priorizar mejoras con impacto real, puedes cotizar en [matiasrodriguez.dev](https://matiasrodriguez.dev).
+Un sitio rápido no garantiza más ventas por sí solo, pero un sitio lento sí te hace perder oportunidades todos los días. Si quieres auditar tu web y priorizar mejoras con impacto real, revisa [SEO técnico y growth](/servicios/growth) o [desarrollo web](/servicios/desarrollo-web).

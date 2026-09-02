@@ -1,8 +1,8 @@
 {
-  "heroTitle": "Ingeniería que escala negocios",
-  "heroSubtitle": "Desarrollo Web, Apps y Automatización con foco en conversión, performance y operación. Menos fricción, más resultados medibles.",
+  "heroTitle": "Desarrollo web y automatización para pymes en Chile",
+  "heroSubtitle": "Next.js, Shopify, apps y procesos digitales con foco en conversión, velocidad y leads. Trabajo remoto desde Santiago para equipos en todo Chile.",
   "aboutTitle": "Quién soy",
-  "aboutBody": "Soy Matías Rodríguez, Ingeniero en Informática. Diseño y construyo productos digitales con mentalidad de ingeniería: arquitectura clara, código mantenible y decisiones guiadas por datos. Trabajo con equipos y negocios que necesitan velocidad sin sacrificar calidad.",
+  "aboutBody": "Soy Matías Rodríguez, Ingeniero en Informática en Santiago, Chile. Diseño y construyo productos digitales con mentalidad de ingeniería: arquitectura clara, código mantenible y decisiones guiadas por datos. Ayudo a pymes a tener web, ecommerce y automatización que realmente generan contactos y ventas.",
   "services": [
     {
       "id": "desarrollo-web",
@@ -65,5 +65,5 @@
       ]
     }
   ],
-  "updatedAt": "2026-05-14T18:04:23.023Z"
+  "updatedAt": "2026-09-02T17:00:00.000Z"
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import {
   BarChart3,
   Bot,
@@ -22,6 +23,7 @@ import {
 import Image from "next/image";
 
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -264,7 +266,11 @@ export function ServicesGrid({ services }: { services: ServiceItem[] }) {
             <div className="max-w-2xl lg:col-span-7">
               <h2 className="text-2xl font-semibold tracking-tight">Servicios</h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Entregables concretos, comunicación clara y foco en resultados.
+                Entregables concretos para pymes en Chile.{" "}
+                <Link href="/servicios" className="text-primary underline underline-offset-4">
+                  Ver todas las páginas de servicio
+                </Link>
+                .
               </p>
             </div>
             <div className="relative hidden h-20 w-32 overflow-hidden rounded-[calc(var(--radius-lg)+10px)] border border-border bg-card sm:block lg:col-span-5 lg:h-24 lg:w-full">
@@ -301,7 +307,11 @@ export function ServicesGrid({ services }: { services: ServiceItem[] }) {
                         </span>
                       ) : null}
                     </div>
-                    <CardTitle>{s.title}</CardTitle>
+                    <CardTitle>
+                      <Link href={`/servicios/${s.id}`} className="hover:text-primary">
+                        {s.title}
+                      </Link>
+                    </CardTitle>
                     <CardDescription>{s.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -313,6 +323,9 @@ export function ServicesGrid({ services }: { services: ServiceItem[] }) {
                         </li>
                       ))}
                     </ul>
+                    <Button asChild variant="secondary" size="sm" className="mt-5">
+                      <Link href={`/servicios/${s.id}`}>Ver servicio</Link>
+                    </Button>
                   </CardContent>
                 </Card>
               </article>
