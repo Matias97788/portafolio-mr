@@ -135,6 +135,7 @@ Devuelve SOLO JSON válido con esta forma:
     body: JSON.stringify({
       model: config.model,
       temperature: 0.7,
+      max_tokens: 8192,
       messages: [
         {
           role: "system",
