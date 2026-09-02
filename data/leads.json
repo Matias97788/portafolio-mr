@@ -1,5 +1,15 @@
 [
   {
+    "name": "Test Formulario",
+    "email": "test@example.com",
+    "phone": "+56979428207",
+    "service": "desarrollo-web",
+    "message": "Prueba automática del formulario de contacto.",
+    "userAgent": "curl/8.7.1",
+    "id": "c13d7c39-7a03-4a70-a7c0-71807143cfb7",
+    "createdAt": "2026-09-02T17:58:55.353Z"
+  },
+  {
     "name": "Matías Test",
     "email": "matias.test@example.com",
     "service": "desarrollo-web",

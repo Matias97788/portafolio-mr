@@ -123,7 +123,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               servicios
             </Link>{" "}
             o{" "}
-            <Link href="/#contacto" className="text-primary underline underline-offset-4">
+            <Link href="/contacto" className="text-primary underline underline-offset-4">
               cotiza
             </Link>{" "}
             con alcance y tiempos claros.

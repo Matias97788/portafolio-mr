@@ -37,9 +37,9 @@ export function Hero({ title, subtitle }: { title: string; subtitle: string }) {
 
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row md:justify-start">
               <Button asChild size="lg">
-                <a href="#contacto">
+                <Link href="/contacto">
                   Cotizar proyecto <ArrowRight className="h-4 w-4" />
-                </a>
+                </Link>
               </Button>
               <Button asChild size="lg" variant="secondary">
                 <Link href="/portafolio">Ver portafolio</Link>

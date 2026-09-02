@@ -9,19 +9,12 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "/portafolio", label: "Portafolio", kind: "route" },
-  { href: "/servicios", label: "Servicios", kind: "route" },
-  { href: "/blog", label: "Blog", kind: "route" },
-  { href: "/#quien-soy", label: "Quién Soy", kind: "hash" },
-  { href: "/#herramientas", label: "Herramientas", kind: "hash" },
+  { href: "/portafolio", label: "Portafolio" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/blog", label: "Blog" },
+  { href: "/quien-soy", label: "Quién Soy" },
+  { href: "/faq", label: "FAQ" },
 ] as const;
-
-function resolveHref(href: string, pathname: string) {
-  if (href.startsWith("/#") && pathname === "/") {
-    return href.slice(1);
-  }
-  return href;
-}
 
 export function NavBar() {
   const [open, setOpen] = React.useState(false);
@@ -48,17 +41,15 @@ export function NavBar() {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
+        <nav className="hidden items-center gap-5 text-sm text-muted-foreground lg:flex">
           {links.map((l) => {
-            const href = resolveHref(l.href, pathname);
             const active =
-              l.kind === "route" &&
-              (pathname === l.href || pathname.startsWith(`${l.href}/`));
+              pathname === l.href || pathname.startsWith(`${l.href}/`);
 
             return (
               <Link
                 key={l.href}
-                href={href}
+                href={l.href}
                 className={cn(
                   "transition-colors hover:text-foreground",
                   active && "text-foreground",
@@ -72,14 +63,14 @@ export function NavBar() {
 
         <div className="flex items-center gap-2">
           <Button asChild size="sm" className="hidden sm:inline-flex">
-            <Link href={resolveHref("/#contacto", pathname)}>Cotizar</Link>
+            <Link href="/contacto">Contacto</Link>
           </Button>
 
           <Button
             type="button"
             variant="outline"
             size="sm"
-            className="md:hidden"
+            className="lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
@@ -92,7 +83,7 @@ export function NavBar() {
 
       <div
         className={cn(
-          "md:hidden",
+          "lg:hidden",
           open ? "pointer-events-auto" : "pointer-events-none",
         )}
         aria-hidden={!open}
@@ -116,7 +107,7 @@ export function NavBar() {
             {links.map((l) => (
               <Link
                 key={l.href}
-                href={resolveHref(l.href, pathname)}
+                href={l.href}
                 className="flex items-center justify-between rounded-lg px-3 py-3 text-sm text-foreground/90 hover:bg-muted"
                 onClick={() => setOpen(false)}
               >
@@ -125,11 +116,8 @@ export function NavBar() {
             ))}
             <div className="mt-2 border-t border-border pt-2">
               <Button asChild size="lg" className="w-full">
-                <Link
-                  href={resolveHref("/#contacto", pathname)}
-                  onClick={() => setOpen(false)}
-                >
-                  Cotizar
+                <Link href="/contacto" onClick={() => setOpen(false)}>
+                  Contacto
                 </Link>
               </Button>
             </div>

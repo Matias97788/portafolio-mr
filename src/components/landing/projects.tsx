@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
+import { ProjectCard } from "@/components/portfolio/project-card";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 import { getFeaturedProjects } from "@/lib/portfolio/projects";
@@ -33,23 +34,7 @@ export function Projects() {
         <Stagger className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
             <StaggerItem key={p.url} className="h-full">
-              <a
-                href={p.url}
-                target="_blank"
-                rel="noreferrer"
-                className="group flex h-full flex-col rounded-[var(--radius-lg)] border border-border bg-card/40 p-5 transition-colors hover:bg-card"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-lg font-semibold tracking-tight">
-                    {p.title}
-                  </h3>
-                  <ExternalLink className="mt-1 h-4 w-4 flex-none text-muted-foreground transition-colors group-hover:text-primary" />
-                </div>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">
-                  {p.summary}
-                </p>
-                <p className="mt-4 text-xs text-muted-foreground">{p.stack}</p>
-              </a>
+              <ProjectCard project={p} />
             </StaggerItem>
           ))}
         </Stagger>

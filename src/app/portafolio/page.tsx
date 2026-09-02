@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
 
+import { ProjectCard } from "@/components/portfolio/project-card";
 import {
   PORTFOLIO_CATEGORIES,
   PORTFOLIO_PROJECTS,
@@ -77,28 +77,7 @@ export default function PortafolioPage() {
                 <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                   {projects.map((p) => (
                     <li key={p.url}>
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group flex h-full flex-col rounded-[var(--radius-lg)] border border-border bg-card/40 p-5 transition-colors hover:bg-card"
-                      >
-                        <div className="flex items-start justify-between gap-3">
-                          <h3 className="text-lg font-semibold tracking-tight">
-                            {p.title}
-                          </h3>
-                          <ExternalLink className="mt-1 h-4 w-4 flex-none text-muted-foreground group-hover:text-primary" />
-                        </div>
-                        <p className="mt-2 flex-1 text-sm text-muted-foreground">
-                          {p.summary}
-                        </p>
-                        <div className="mt-4 flex items-center justify-between gap-3 text-xs text-muted-foreground">
-                          <span>{p.stack}</span>
-                          <span className="truncate opacity-70">
-                            {p.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}
-                          </span>
-                        </div>
-                      </a>
+                      <ProjectCard project={p} />
                     </li>
                   ))}
                 </ul>
@@ -113,10 +92,10 @@ export default function PortafolioPage() {
             Cuéntame el objetivo y te propongo alcance, tiempos y costo estimado.
           </p>
           <Link
-            href="/#contacto"
+            href="/contacto"
             className="mt-4 inline-flex text-sm text-primary underline underline-offset-4"
           >
-            Ir a cotizar
+            Ir a contacto
           </Link>
         </section>
       </main>

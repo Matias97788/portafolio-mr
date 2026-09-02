@@ -1,8 +1,10 @@
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 import { Hero } from "@/components/landing/hero";
 import { NavBar } from "@/components/landing/nav-bar";
 import { LazySection } from "@/components/motion/lazy-section";
+import { Button } from "@/components/ui/button";
 import { SITE_URL } from "@/lib/site";
 import { getSiteConfig } from "@/lib/server/store";
 
@@ -26,20 +28,8 @@ const ServicesGrid = dynamic(() =>
   import("@/components/landing/services-grid").then((m) => m.ServicesGrid),
 );
 
-const Contact = dynamic(() =>
-  import("@/components/landing/contact").then((m) => m.Contact),
-);
-
-const About = dynamic(() =>
-  import("@/components/landing/about").then((m) => m.About),
-);
-
 const WhatsAppFab = dynamic(() =>
   import("@/components/landing/whatsapp-fab").then((m) => m.WhatsAppFab),
-);
-
-const HomeFaq = dynamic(() =>
-  import("@/components/landing/home-faq").then((m) => m.HomeFaq),
 );
 
 export default async function Home() {
@@ -146,15 +136,30 @@ export default async function Home() {
         <LazySection minHeight={520}>
           <ServicesGrid services={config.services} />
         </LazySection>
-        <LazySection minHeight={360}>
-          <About title={config.aboutTitle} body={config.aboutBody} />
-        </LazySection>
-        <LazySection minHeight={320}>
-          <HomeFaq />
-        </LazySection>
-        <LazySection minHeight={480}>
-          <Contact services={config.services} />
-        </LazySection>
+
+        <section className="border-b border-border">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-12 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="text-xl font-semibold tracking-tight">
+                ¿Hablamos de tu proyecto?
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Cotiza, revisa quién soy o lee las preguntas frecuentes.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Button asChild>
+                <Link href="/contacto">Ir a contacto</Link>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href="/quien-soy">Quién soy</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/faq">FAQ</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
       </main>
 
       <LazySection minHeight={160}>

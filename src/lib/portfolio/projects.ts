@@ -10,6 +10,7 @@ export type PortfolioProject = {
   category: PortfolioCategory;
   stack: string;
   summary: string;
+  logo: string;
   featured?: boolean;
 };
 
@@ -48,6 +49,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "innovax",
     stack: "WordPress custom",
     summary: "Sitio corporativo WordPress a medida.",
+    logo: "/portfolio/logos/koslan-cl.png",
     featured: true,
   },
   {
@@ -56,6 +58,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "innovax",
     stack: "WordPress custom",
     summary: "Presencia web institucional con estructura de contenidos clara.",
+    logo: "/portfolio/logos/institutobase-cl.png",
     featured: true,
   },
   {
@@ -64,6 +67,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "innovax",
     stack: "WordPress custom",
     summary: "Sitio de bienestar corporativo orientado a información y acceso.",
+    logo: "/portfolio/logos/bienestarfinning-cl.png",
   },
   {
     title: "Nexsolar",
@@ -71,6 +75,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "innovax",
     stack: "WordPress custom",
     summary: "Web para empresa de energía solar.",
+    logo: "/portfolio/logos/nexsolar-cl.png",
     featured: true,
   },
   {
@@ -79,6 +84,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "innovax",
     stack: "WordPress custom",
     summary: "Sitio corporativo WordPress personalizado.",
+    logo: "/portfolio/logos/sgscm-cl.png",
   },
   {
     title: "The Merch Studio",
@@ -86,6 +92,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "innovax",
     stack: "WordPress custom",
     summary: "Presencia web para estudio de merchandising.",
+    logo: "/portfolio/logos/themerchstudio-cl.png",
   },
   {
     title: "Pet Beauty",
@@ -93,6 +100,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "innovax",
     stack: "WordPress · Kinsta",
     summary: "Sitio WordPress hospedado en Kinsta.",
+    logo: "/portfolio/logos/petbeauty-kinsta-cloud.svg",
   },
   {
     title: "Nano Negocios",
@@ -100,6 +108,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "innovax",
     stack: "WordPress · Kinsta",
     summary: "Plataforma WordPress para nano negocios.",
+    logo: "/portfolio/logos/nanonegocios-kinsta-cloud.png",
   },
   {
     title: "Don Salo",
@@ -107,6 +116,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "innovax",
     stack: "WordPress custom",
     summary: "Sitio WordPress a medida.",
+    logo: "/portfolio/logos/donsalo-cl.png",
   },
   {
     title: "New Science",
@@ -114,6 +124,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "shopify",
     stack: "Shopify",
     summary: "Tienda Shopify para marca de ciencia y productos.",
+    logo: "/portfolio/logos/newscience-com-ar.png",
     featured: true,
   },
   {
@@ -122,6 +133,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "nomanadas",
     stack: "Web",
     summary: "Sitio principal de Nomanadas.",
+    logo: "/portfolio/logos/nomanadas-com.png",
     featured: true,
   },
   {
@@ -130,6 +142,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "nomanadas",
     stack: "Web",
     summary: "Proyecto web desarrollado junto a Nomanadas.",
+    logo: "/portfolio/logos/riaspa-cl.svg",
   },
   {
     title: "María José Sáez",
@@ -137,6 +150,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "personal",
     stack: "Web",
     summary: "Sitio personal / profesional.",
+    logo: "/portfolio/logos/mariajosesaez-cl.png",
   },
   {
     title: "Alpaka Studio",
@@ -144,6 +158,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "personal",
     stack: "Web",
     summary: "Presencia web para estudio creativo.",
+    logo: "/portfolio/logos/alpakastudio-cl.png",
     featured: true,
   },
   {
@@ -152,6 +167,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "personal",
     stack: "Web",
     summary: "Sitio corporativo para grupo empresarial.",
+    logo: "/portfolio/logos/kysgroup-cl.png",
   },
   {
     title: "Cúspide Digital",
@@ -159,6 +175,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     category: "personal",
     stack: "Next.js",
     summary: "Agencia digital: sitio con foco en servicios y captación de leads.",
+    logo: "/portfolio/logos/cuspidedigital-cl.png",
     featured: true,
   },
 ];

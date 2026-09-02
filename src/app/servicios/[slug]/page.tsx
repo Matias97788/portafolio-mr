@@ -130,7 +130,7 @@ export default async function ServicioPage({ params }: PageProps) {
 
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild size="lg">
-            <a href="/#contacto">Cotizar este servicio</a>
+            <a href="/contacto">Cotizar este servicio</a>
           </Button>
           <Button asChild size="lg" variant="secondary">
             <a
@@ -213,7 +213,7 @@ export default async function ServicioPage({ params }: PageProps) {
             alcance, tiempos y costo estimado.
           </p>
           <Button asChild className="mt-5">
-            <a href="/#contacto">Ir al formulario</a>
+            <a href="/contacto">Ir al formulario</a>
           </Button>
         </section>
       </main>

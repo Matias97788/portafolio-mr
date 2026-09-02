@@ -9,10 +9,8 @@ type DotNavItem = { id: string; label: string };
 const items: DotNavItem[] = [
   { id: "top", label: "Inicio" },
   { id: "herramientas", label: "Herramientas" },
-  { id: "servicios", label: "Servicios" },
   { id: "proyectos", label: "Proyectos" },
-  { id: "quien-soy", label: "Quién soy" },
-  { id: "contacto", label: "Contacto" },
+  { id: "servicios", label: "Servicios" },
 ];
 
 export function DotNav({ className }: { className?: string }) {

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Link2 } from "lucide-react";
+
+import { LinkedInIcon } from "@/components/icons/linkedin";
 
 export function Footer() {
   const linkedInUrl = "https://www.linkedin.com/in/matias-rodriguez-sandoval-/";
@@ -31,12 +32,13 @@ export function Footer() {
               </div>
             </div>
             <a
-              className="mt-4 inline-flex items-center gap-2 text-sm text-primary underline underline-offset-4"
+              className="mt-5 inline-flex items-center gap-2 rounded-[var(--radius-lg)] border border-border bg-card px-3 py-2 text-sm text-foreground transition-colors hover:border-primary/40 hover:text-primary"
               href={linkedInUrl}
               target="_blank"
               rel="noreferrer"
+              aria-label="LinkedIn de Matías Rodríguez"
             >
-              <Link2 className="h-4 w-4" aria-hidden="true" />
+              <LinkedInIcon className="h-4 w-4" />
               LinkedIn
             </a>
           </div>
@@ -59,18 +61,18 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-foreground" href="/#quien-soy">
+                <Link className="hover:text-foreground" href="/quien-soy">
                   Quién Soy
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-foreground" href="/#faq">
+                <Link className="hover:text-foreground" href="/faq">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-foreground" href="/#contacto">
-                  Cotizar
+                <Link className="hover:text-foreground" href="/contacto">
+                  Contacto
                 </Link>
               </li>
             </ul>
@@ -79,7 +81,15 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <div>© {new Date().getFullYear()} Matías Rodríguez</div>
-          <div>Desarrollo web · Chile</div>
+          <a
+            className="inline-flex items-center gap-1.5 hover:text-foreground"
+            href={linkedInUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <LinkedInIcon className="h-3.5 w-3.5" />
+            LinkedIn
+          </a>
         </div>
       </div>
     </footer>
