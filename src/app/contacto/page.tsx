@@ -1,4 +1,5 @@
 import { Contact } from "@/components/landing/contact";
+import { AnimatedBlock } from "@/components/motion/animated";
 import { getSiteConfig } from "@/lib/server/store";
 import { SITE_URL } from "@/lib/site";
 
@@ -18,7 +19,9 @@ export default async function ContactoPage() {
 
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-14">
-      <Contact services={config.services} titleAs="h1" />
+      <AnimatedBlock>
+        <Contact services={config.services} titleAs="h1" />
+      </AnimatedBlock>
     </main>
   );
 }

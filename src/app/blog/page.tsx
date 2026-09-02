@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { AnimatedBlock, AnimatedList } from "@/components/motion/animated";
 import { listBlogPosts } from "@/lib/blog/posts";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -17,16 +18,18 @@ export default async function BlogPage() {
   return (
     <>
       <main className="mx-auto w-full max-w-6xl px-4 py-14">
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          Blog
-        </h1>
-        <p className="mt-3 max-w-2xl text-muted-foreground">
-          Ideas prácticas sobre web, performance, ecommerce y automatización.
-        </p>
+        <AnimatedBlock>
+          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+            Blog
+          </h1>
+          <p className="mt-3 max-w-2xl text-muted-foreground">
+            Ideas prácticas sobre web, performance, ecommerce y automatización.
+          </p>
+        </AnimatedBlock>
 
-        <div className="mt-10 grid gap-8 sm:grid-cols-2">
+        <AnimatedList className="mt-10 grid gap-8 sm:grid-cols-2">
           {posts.map((post) => (
-            <article key={post.slug} className="group">
+            <article key={post.slug} className="group h-full">
               <Link href={`/blog/${post.slug}`} className="block">
                 <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-border bg-muted">
                   {post.cover ? (
@@ -35,7 +38,7 @@ export default async function BlogPage() {
                       alt={post.coverAlt ?? post.title}
                       fill
                       sizes="(max-width: 640px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     />
                   ) : null}
                 </div>
@@ -72,7 +75,7 @@ export default async function BlogPage() {
               </div>
             </article>
           ))}
-        </div>
+        </AnimatedList>
       </main>
 
       <script

@@ -11,7 +11,7 @@ export function ProjectCard({ project }: { project: PortfolioProject }) {
       href={project.url}
       target="_blank"
       rel="noreferrer"
-      className="group flex h-full gap-4 rounded-[var(--radius-lg)] border border-border bg-card/40 p-4 transition-colors hover:bg-card sm:p-5"
+      className="group flex h-full gap-4 rounded-[var(--radius-lg)] border border-border bg-card/40 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-card sm:p-5"
     >
       <div className="relative h-14 w-14 flex-none overflow-hidden rounded-xl border border-border bg-background">
         <Image

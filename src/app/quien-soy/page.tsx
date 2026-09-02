@@ -1,4 +1,5 @@
 import { AboutContent } from "@/components/landing/about-content";
+import { AnimatedBlock } from "@/components/motion/animated";
 import { getSiteConfig } from "@/lib/server/store";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -30,11 +31,13 @@ export default async function QuienSoyPage() {
   return (
     <>
       <main className="mx-auto w-full max-w-6xl px-4 py-14">
-        <AboutContent
-          title={config.aboutTitle}
-          body={config.aboutBody}
-          titleAs="h1"
-        />
+        <AnimatedBlock>
+          <AboutContent
+            title={config.aboutTitle}
+            body={config.aboutBody}
+            titleAs="h1"
+          />
+        </AnimatedBlock>
       </main>
       <script
         type="application/ld+json"

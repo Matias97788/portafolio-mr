@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Hero } from "@/components/landing/hero";
 import { NavBar } from "@/components/landing/nav-bar";
 import { LazySection } from "@/components/motion/lazy-section";
+import { PageEnter } from "@/components/motion/page-enter";
 import { Button } from "@/components/ui/button";
 import { SITE_URL } from "@/lib/site";
 import { getSiteConfig } from "@/lib/server/store";
@@ -125,42 +126,44 @@ export default async function Home() {
       <div id="top" className="h-px" />
       <NavBar />
 
-      <main id="contenido" className="flex-1">
-        <Hero title={config.heroTitle} subtitle={config.heroSubtitle} />
-        <LazySection minHeight={320}>
-          <ToolsCarousel />
-        </LazySection>
-        <LazySection minHeight={420}>
-          <Projects />
-        </LazySection>
-        <LazySection minHeight={520}>
-          <ServicesGrid services={config.services} />
-        </LazySection>
+      <PageEnter className="flex-1">
+        <main id="contenido">
+          <Hero title={config.heroTitle} subtitle={config.heroSubtitle} />
+          <LazySection minHeight={320}>
+            <ToolsCarousel />
+          </LazySection>
+          <LazySection minHeight={420}>
+            <Projects />
+          </LazySection>
+          <LazySection minHeight={520}>
+            <ServicesGrid services={config.services} />
+          </LazySection>
 
-        <section className="border-b border-border">
-          <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-12 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h2 className="text-xl font-semibold tracking-tight">
-                ¿Hablamos de tu proyecto?
-              </h2>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Cotiza, revisa quién soy o lee las preguntas frecuentes.
-              </p>
+          <section className="border-b border-border">
+            <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-12 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h2 className="text-xl font-semibold tracking-tight">
+                  ¿Hablamos de tu proyecto?
+                </h2>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Cotiza, revisa quién soy o lee las preguntas frecuentes.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Button asChild>
+                  <Link href="/contacto">Ir a contacto</Link>
+                </Button>
+                <Button asChild variant="secondary">
+                  <Link href="/quien-soy">Quién soy</Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/faq">FAQ</Link>
+                </Button>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <Button asChild>
-                <Link href="/contacto">Ir a contacto</Link>
-              </Button>
-              <Button asChild variant="secondary">
-                <Link href="/quien-soy">Quién soy</Link>
-              </Button>
-              <Button asChild variant="outline">
-                <Link href="/faq">FAQ</Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-      </main>
+          </section>
+        </main>
+      </PageEnter>
 
       <LazySection minHeight={160}>
         <Footer />

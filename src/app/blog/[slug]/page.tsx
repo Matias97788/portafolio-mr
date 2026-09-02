@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PostContent } from "@/components/blog/post-content";
+import { AnimatedBlock } from "@/components/motion/animated";
 import { getBlogPost, listBlogPosts } from "@/lib/blog/posts";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -81,6 +82,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <>
       <main className="mx-auto w-full max-w-3xl px-4 py-12">
+        <AnimatedBlock>
         <p className="text-sm text-muted-foreground">
           <Link href="/blog" className="hover:text-foreground">
             ← Blog
@@ -129,6 +131,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             con alcance y tiempos claros.
           </p>
         </section>
+        </AnimatedBlock>
       </main>
 
       <script

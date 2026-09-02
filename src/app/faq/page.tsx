@@ -1,4 +1,5 @@
 import { FaqList } from "@/components/landing/faq-list";
+import { AnimatedBlock } from "@/components/motion/animated";
 import { faqs } from "@/lib/content/faqs";
 import { SITE_URL } from "@/lib/site";
 
@@ -27,7 +28,9 @@ export default function FaqPage() {
   return (
     <>
       <main className="mx-auto w-full max-w-3xl px-4 py-14">
-        <FaqList titleAs="h1" />
+        <AnimatedBlock>
+          <FaqList titleAs="h1" />
+        </AnimatedBlock>
       </main>
       <script
         type="application/ld+json"

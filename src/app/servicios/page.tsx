@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { AnimatedBlock, AnimatedList } from "@/components/motion/animated";
 import { Button } from "@/components/ui/button";
 import { SERVICE_SEO } from "@/lib/services/seo-content";
 import { SITE_URL } from "@/lib/site";
@@ -35,21 +36,23 @@ export default function ServiciosPage() {
   return (
     <>
       <main className="mx-auto w-full max-w-6xl px-4 py-14">
-        <p className="text-sm font-medium text-primary">Santiago · Chile</p>
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
-          Servicios digitales para pymes en Chile
-        </h1>
-        <p className="mt-4 max-w-2xl text-muted-foreground">
-          Desarrollo web, ecommerce, apps, automatización y growth con foco en
-          conversión, velocidad y operación. Elige un servicio para ver alcance,
-          proceso y preguntas frecuentes.
-        </p>
+        <AnimatedBlock>
+          <p className="text-sm font-medium text-primary">Santiago · Chile</p>
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+            Servicios digitales para pymes en Chile
+          </h1>
+          <p className="mt-4 max-w-2xl text-muted-foreground">
+            Desarrollo web, ecommerce, apps, automatización y growth con foco en
+            conversión, velocidad y operación. Elige un servicio para ver alcance,
+            proceso y preguntas frecuentes.
+          </p>
+        </AnimatedBlock>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <AnimatedList className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <article
               key={s.id}
-              className="flex h-full flex-col border-t border-border pt-5"
+              className="flex h-full flex-col border-t border-border pt-5 transition-transform duration-300 hover:-translate-y-0.5"
             >
               <h2 className="text-xl font-semibold tracking-tight">
                 <Link
@@ -67,7 +70,7 @@ export default function ServiciosPage() {
               </Button>
             </article>
           ))}
-        </div>
+        </AnimatedList>
       </main>
 
       <script

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
+import { AnimatedBlock } from "@/components/motion/animated";
 import {
   getServiceSeo,
   SERVICE_IDS,
@@ -115,6 +116,7 @@ export default async function ServicioPage({ params }: PageProps) {
   return (
     <>
       <main className="mx-auto w-full max-w-3xl px-4 py-12">
+        <AnimatedBlock>
         <p className="text-sm text-muted-foreground">
           <Link href="/servicios" className="hover:text-foreground">
             ← Servicios
@@ -216,6 +218,7 @@ export default async function ServicioPage({ params }: PageProps) {
             <a href="/contacto">Ir al formulario</a>
           </Button>
         </section>
+        </AnimatedBlock>
       </main>
 
       <script

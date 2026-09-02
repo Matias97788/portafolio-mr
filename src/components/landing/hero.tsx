@@ -24,18 +24,30 @@ export function Hero({ title, subtitle }: { title: string; subtitle: string }) {
       <div className="relative mx-auto w-full max-w-6xl px-4 py-16 sm:py-20">
         <div className="grid gap-10 md:grid-cols-12 md:items-center">
           <div className="text-center md:col-span-7 md:text-left">
-            <p className="text-sm text-muted-foreground">
+            <p
+              className="animate-fade-up text-sm text-muted-foreground"
+              style={{ animationDelay: "40ms" }}
+            >
               Ingeniero en Informática · Santiago, Chile
             </p>
 
-            <h1 className="mt-4 text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-[3.25rem] md:leading-[1.1]">
+            <h1
+              className="animate-fade-up mt-4 text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-[3.25rem] md:leading-[1.1]"
+              style={{ animationDelay: "120ms" }}
+            >
               {title}
             </h1>
-            <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg md:mx-0">
+            <p
+              className="animate-fade-up mx-auto mt-5 max-w-xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg md:mx-0"
+              style={{ animationDelay: "200ms" }}
+            >
               {subtitle}
             </p>
 
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row md:justify-start">
+            <div
+              className="animate-fade-up mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row md:justify-start"
+              style={{ animationDelay: "280ms" }}
+            >
               <Button asChild size="lg">
                 <Link href="/contacto">
                   Cotizar proyecto <ArrowRight className="h-4 w-4" />
@@ -47,8 +59,11 @@ export function Hero({ title, subtitle }: { title: string; subtitle: string }) {
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-sm md:col-span-5 md:max-w-none">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-lg)] border border-border bg-card">
+          <div
+            className="animate-fade-up mx-auto w-full max-w-sm md:col-span-5 md:max-w-none"
+            style={{ animationDelay: "180ms" }}
+          >
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[var(--radius-lg)] border border-border bg-card transition-transform duration-500 hover:scale-[1.01]">
               <Image
                 alt="Matías Rodríguez, ingeniero en informática"
                 src={avatarImage}
