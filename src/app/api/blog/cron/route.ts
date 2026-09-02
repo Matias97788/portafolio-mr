@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { generateBlogDraft } from "@/lib/server/ai-blog";
+import { generateBlogDraft, isAiConfigured } from "@/lib/server/ai-blog";
 import { publishBlogDraft } from "@/lib/server/blog-publish";
 import { isGitHubPublishEnabled } from "@/lib/server/github";
 import { isLinkedInEnabled, publishToLinkedIn } from "@/lib/server/linkedin";
@@ -15,8 +15,14 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }
 
-  if (!process.env.OPENAI_API_KEY) {
-    return NextResponse.json({ error: "OPENAI_API_KEY no configurada" }, { status: 400 });
+  if (!isAiConfigured()) {
+    return NextResponse.json(
+      {
+        error:
+          "IA no configurada. Define GROQ_API_KEY (gratis) o GEMINI_API_KEY.",
+      },
+      { status: 400 },
+    );
   }
 
   if (!isGitHubPublishEnabled()) {

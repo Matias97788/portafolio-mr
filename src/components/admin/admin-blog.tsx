@@ -115,8 +115,19 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">Blog automático</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Genera artículos con IA, publícalos en la web y compártelos en LinkedIn.
+          Genera artículos con IA (Groq/Gemini gratis), publícalos en la web y
+          compártelos en LinkedIn.
         </p>
+        <ul className="mt-3 list-disc space-y-1 pl-5 text-xs text-muted-foreground">
+          <li>
+            IA: configura <code>GROQ_API_KEY</code> en Vercel (gratis en{" "}
+            console.groq.com) o <code>GEMINI_API_KEY</code>.
+          </li>
+          <li>
+            LinkedIn: <code>LINKEDIN_ACCESS_TOKEN</code> +{" "}
+            <code>LINKEDIN_AUTHOR_URN</code> (app en linkedin.com/developers).
+          </li>
+        </ul>
       </div>
 
       <Card>
