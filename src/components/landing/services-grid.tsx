@@ -264,7 +264,7 @@ export function ServicesGrid({ services }: { services: ServiceItem[] }) {
         <Reveal>
           <header className="grid gap-6 lg:grid-cols-12 lg:items-center">
             <div className="max-w-2xl lg:col-span-7">
-              <h2 className="text-2xl font-semibold tracking-tight">Servicios</h2>
+              <h2 className="font-display text-3xl tracking-tight">Servicios</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Entregables concretos para pymes en Chile.{" "}
                 <Link href="/servicios" className="text-primary underline underline-offset-4">

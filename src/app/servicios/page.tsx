@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { SERVICE_SEO } from "@/lib/services/seo-content";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata = {
   title: "Servicios de desarrollo web, ecommerce y automatización en Chile",
@@ -33,29 +33,10 @@ export default function ServiciosPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b border-border">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-4">
-          <Link href="/" className="text-sm font-semibold">
-            {SITE_NAME}
-          </Link>
-          <div className="flex items-center gap-4 text-sm">
-            <Link href="/blog" className="text-muted-foreground hover:text-foreground">
-              Blog
-            </Link>
-            <Link
-              href="/#contacto"
-              className="text-primary underline underline-offset-4"
-            >
-              Cotizar
-            </Link>
-          </div>
-        </div>
-      </header>
-
+    <>
       <main className="mx-auto w-full max-w-6xl px-4 py-14">
-        <p className="text-sm text-muted-foreground">Santiago · Chile</p>
-        <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+        <p className="text-sm font-medium text-primary">Santiago · Chile</p>
+        <h1 className="font-display mt-2 text-4xl tracking-tight sm:text-5xl">
           Servicios digitales para pymes en Chile
         </h1>
         <p className="mt-4 max-w-2xl text-muted-foreground">
@@ -64,13 +45,13 @@ export default function ServiciosPage() {
           proceso y preguntas frecuentes.
         </p>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <article
               key={s.id}
-              className="flex h-full flex-col rounded-[var(--radius-lg)] border border-border bg-card/50 p-6"
+              className="flex h-full flex-col border-t border-border pt-5"
             >
-              <h2 className="text-xl font-semibold">
+              <h2 className="font-display text-2xl tracking-tight">
                 <Link
                   href={`/servicios/${s.id}`}
                   className="hover:text-primary"
@@ -93,6 +74,6 @@ export default function ServiciosPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </div>
+    </>
   );
 }

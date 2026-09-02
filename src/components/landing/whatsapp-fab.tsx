@@ -64,7 +64,7 @@ export function WhatsAppFab({
         href={waUrl}
         target="_blank"
         rel="noreferrer"
-        className="group flex items-center gap-2 rounded-full border border-border bg-card/80 px-3 py-2 shadow-lg shadow-black/30 backdrop-blur transition-transform hover:-translate-y-0.5 hover:scale-[1.02]"
+        className="group flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 shadow-md transition-transform hover:-translate-y-0.5"
         aria-label="Abrir chat de WhatsApp"
       >
         <span className="grid h-10 w-10 place-items-center rounded-full bg-[#25D366]/15 text-[#25D366] ring-1 ring-[#25D366]/30">

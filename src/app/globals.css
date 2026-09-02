@@ -1,20 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
-  --card: 240 10% 6.5%;
-  --card-foreground: 0 0% 98%;
-  --muted: 240 7% 11%;
-  --muted-foreground: 240 5% 64.9%;
-  --border: 240 7% 14%;
-  --input: 240 7% 14%;
-  --primary: 224 76% 56%;
+  /* Light studio — cool stone + pine teal (no purple / no near-black) */
+  --background: 150 12% 96%;
+  --foreground: 160 18% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 160 18% 12%;
+  --muted: 150 10% 91%;
+  --muted-foreground: 160 8% 38%;
+  --border: 150 10% 84%;
+  --input: 150 10% 84%;
+  --primary: 168 52% 28%;
   --primary-foreground: 0 0% 98%;
-  --ring: 224 76% 56%;
-  --radius: 14px;
+  --ring: 168 52% 28%;
+  --accent-wash: 168 35% 88%;
+  --radius: 10px;
 
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -30,7 +32,8 @@
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-ring: hsl(var(--ring));
   --radius-lg: var(--radius);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
 }
 
 html {
@@ -107,8 +110,30 @@ section[id] {
   scroll-margin-top: 88px;
 }
 
+.font-display {
+  font-family: var(--font-display), var(--font-body), ui-serif, Georgia, serif;
+}
+
 body {
-  background: hsl(var(--background));
+  background-color: hsl(var(--background));
+  background-image:
+    radial-gradient(
+      900px 520px at 8% -10%,
+      hsl(var(--accent-wash) / 0.7),
+      transparent 55%
+    ),
+    radial-gradient(
+      700px 480px at 92% 8%,
+      hsl(42 40% 90% / 0.55),
+      transparent 50%
+    ),
+    linear-gradient(
+      180deg,
+      hsl(150 12% 97%) 0%,
+      hsl(var(--background)) 40%,
+      hsl(150 10% 94%) 100%
+    );
+  background-attachment: fixed;
   color: hsl(var(--foreground));
   font-family: var(--font-sans);
 }

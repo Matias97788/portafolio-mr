@@ -113,32 +113,20 @@ export default async function ServicioPage({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b border-border">
-        <div className="mx-auto flex w-full max-w-3xl items-center justify-between gap-4 px-4 py-4">
-          <Link
-            href="/servicios"
-            className="text-sm text-muted-foreground hover:text-foreground"
-          >
-            ← Servicios
-          </Link>
-          <Link
-            href="/#contacto"
-            className="text-sm text-primary underline underline-offset-4"
-          >
-            Cotizar
-          </Link>
-        </div>
-      </header>
-
+    <>
       <main className="mx-auto w-full max-w-3xl px-4 py-12">
         <p className="text-sm text-muted-foreground">
+          <Link href="/servicios" className="hover:text-foreground">
+            ← Servicios
+          </Link>
+        </p>
+        <p className="mt-6 text-sm font-medium text-primary">
           Servicio · Santiago, Chile
         </p>
-        <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="font-display mt-3 text-balance text-3xl tracking-tight sm:text-4xl">
           {service.h1}
         </h1>
-        <p className="mt-5 text-muted-foreground leading-7">{service.intro}</p>
+        <p className="mt-5 leading-7 text-muted-foreground">{service.intro}</p>
 
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild size="lg">
@@ -156,7 +144,7 @@ export default async function ServicioPage({ params }: PageProps) {
         </div>
 
         <section className="mt-14">
-          <h2 className="text-2xl font-semibold">Qué entregas</h2>
+          <h2 className="font-display text-3xl tracking-tight">Qué entregas</h2>
           <ul className="mt-4 list-disc space-y-2 pl-5 text-muted-foreground">
             {service.outcomes.map((item) => (
               <li key={item}>{item}</li>
@@ -165,10 +153,10 @@ export default async function ServicioPage({ params }: PageProps) {
         </section>
 
         <section className="mt-14">
-          <h2 className="text-2xl font-semibold">Cómo trabajamos</h2>
-          <ol className="mt-6 space-y-5">
+          <h2 className="font-display text-3xl tracking-tight">Cómo trabajamos</h2>
+          <ol className="mt-6 space-y-6">
             {service.process.map((step, i) => (
-              <li key={step.title} className="rounded-[var(--radius-lg)] border border-border bg-card/40 p-5">
+              <li key={step.title} className="border-t border-border pt-5">
                 <div className="text-xs text-muted-foreground">Paso {i + 1}</div>
                 <h3 className="mt-1 text-lg font-semibold">{step.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{step.body}</p>
@@ -178,14 +166,18 @@ export default async function ServicioPage({ params }: PageProps) {
         </section>
 
         <section className="mt-14">
-          <h2 className="text-2xl font-semibold">Preguntas frecuentes</h2>
-          <div className="mt-6 space-y-4">
+          <h2 className="font-display text-3xl tracking-tight">
+            Preguntas frecuentes
+          </h2>
+          <div className="mt-6 space-y-3">
             {service.faqs.map((f) => (
               <details
                 key={f.question}
-                className="rounded-[var(--radius-lg)] border border-border bg-card/40 p-4"
+                className="border-t border-border pt-4"
               >
-                <summary className="cursor-pointer font-medium">{f.question}</summary>
+                <summary className="cursor-pointer font-medium">
+                  {f.question}
+                </summary>
                 <p className="mt-3 text-sm text-muted-foreground">{f.answer}</p>
               </details>
             ))}
@@ -194,13 +186,15 @@ export default async function ServicioPage({ params }: PageProps) {
 
         {relatedPosts.length > 0 ? (
           <section className="mt-14">
-            <h2 className="text-2xl font-semibold">Artículos relacionados</h2>
-            <div className="mt-4 grid gap-3">
+            <h2 className="font-display text-3xl tracking-tight">
+              Artículos relacionados
+            </h2>
+            <div className="mt-4 grid gap-4">
               {relatedPosts.map((post) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="rounded-[var(--radius-lg)] border border-border bg-card/40 p-4 hover:bg-card"
+                  className="border-t border-border pt-4 hover:text-primary"
                 >
                   <div className="font-medium">{post.title}</div>
                   <p className="mt-1 text-sm text-muted-foreground">
@@ -212,8 +206,8 @@ export default async function ServicioPage({ params }: PageProps) {
           </section>
         ) : null}
 
-        <section className="mt-14 rounded-[var(--radius-lg)] border border-border bg-card/50 p-6">
-          <h2 className="text-xl font-semibold">¿Hablamos de tu proyecto?</h2>
+        <section className="mt-14 border-t border-border pt-8">
+          <h2 className="font-display text-2xl">¿Hablamos de tu proyecto?</h2>
           <p className="mt-2 text-sm text-muted-foreground">
             Cuéntame objetivo, plazo y links de referencia. Te respondo con
             alcance, tiempos y costo estimado.
@@ -228,6 +222,6 @@ export default async function ServicioPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </div>
+    </>
   );
 }

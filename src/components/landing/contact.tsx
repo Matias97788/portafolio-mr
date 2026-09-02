@@ -102,7 +102,7 @@ export function Contact({ services }: { services: ServiceItem[] }) {
         <div className="grid gap-10 md:grid-cols-12 md:items-center">
           <Reveal className="md:col-span-7 md:order-1">
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight">Cotizar</h2>
+              <h2 className="font-display text-3xl tracking-tight">Cotizar</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Cuéntame qué necesitas y te devuelvo una propuesta clara (alcance,
                 tiempos y costo).

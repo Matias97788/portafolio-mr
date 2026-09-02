@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
 import {
   Atom,
   BarChart3,
@@ -10,7 +9,6 @@ import {
   Database,
   Globe,
   Mail,
-  Wrench,
   Notebook,
   ShoppingBag,
   ShoppingCart,
@@ -44,7 +42,7 @@ function ToolChip({
   Icon: React.ComponentType<{ className?: string }>;
 }) {
   return (
-    <div className="flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-2 text-sm text-foreground/90 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
+    <div className="flex items-center gap-2 border border-border bg-card px-3.5 py-2 text-sm text-foreground">
       <Icon className="h-4 w-4 text-primary" />
       <span className="whitespace-nowrap">{label}</span>
     </div>
@@ -53,7 +51,6 @@ function ToolChip({
 
 export function ToolsCarousel() {
   const content = React.useMemo(() => [...tools, ...tools], []);
-  const toolsImage = "/visuals/tools.svg";
   const [reduceMotion, setReduceMotion] = React.useState(true);
 
   React.useEffect(() => {
@@ -66,44 +63,17 @@ export function ToolsCarousel() {
     <section id="herramientas" className="border-b border-border">
       <div className="mx-auto w-full max-w-6xl px-4 py-14">
         <Reveal>
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight">
-                Herramientas
-              </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Stack práctico, probado y enfocado en entrega.
-              </p>
-            </div>
-            <div className="relative hidden h-20 w-32 overflow-hidden rounded-[calc(var(--radius-lg)+10px)] border border-border bg-card sm:block">
-              <Image
-                alt=""
-                aria-hidden="true"
-                src={toolsImage}
-                fill
-                sizes="128px"
-                className="object-cover"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-background/70 via-background/20 to-transparent">
-                <div className="pointer-events-none absolute right-2 top-2 rounded-full border border-border bg-background/50 p-1.5 text-foreground/90 backdrop-blur">
-                  <Wrench className="h-3.5 w-3.5 text-primary sm:h-4 sm:w-4" />
-                </div>
-              </div>
-            </div>
+          <div>
+            <h2 className="font-display text-3xl tracking-tight">
+              Herramientas
+            </h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Stack práctico, probado y enfocado en entrega.
+            </p>
           </div>
         </Reveal>
 
-        <div className="relative mt-8 overflow-hidden rounded-[calc(var(--radius-lg)+8px)] border border-border bg-card/40">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-80"
-            style={{
-              background:
-                "radial-gradient(500px 180px at 30% 0%, rgba(99,102,241,0.18), transparent 60%), radial-gradient(420px 200px at 80% 100%, rgba(59,130,246,0.10), transparent 65%)",
-            }}
-          />
-
+        <div className="relative mt-8 overflow-hidden border border-border bg-card/70">
           <div className="relative py-6">
             <div
               className={cn(

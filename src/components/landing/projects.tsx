@@ -89,7 +89,7 @@ export function Projects() {
           <header className="grid gap-6 lg:grid-cols-12 lg:items-center">
             <div className="max-w-2xl lg:col-span-7">
               <h2 className="sr-only">Proyectos</h2>
-              <p className="text-2xl font-semibold tracking-tight">
+              <p className="font-display text-3xl tracking-tight">
                 Proyectos destacados
               </p>
               <p className="mt-2 text-sm text-muted-foreground">

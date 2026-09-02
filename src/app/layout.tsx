@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Instrument_Serif, Source_Sans_3 } from "next/font/google";
 
 import { Analytics } from "@/components/analytics";
 import {
@@ -10,8 +10,15 @@ import {
 } from "@/lib/site";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const display = Instrument_Serif({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
+const body = Source_Sans_3({
+  variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
   preload: true,
@@ -88,7 +95,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${geistSans.variable} h-full antialiased`}>
+    <html
+      lang="es"
+      className={`${display.variable} ${body.variable} h-full antialiased`}
+    >
       <head>
         <link
           rel="preload"
@@ -98,7 +108,7 @@ export default function RootLayout({
           fetchPriority="high"
         />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col">
         {children}
         <Analytics />
       </body>

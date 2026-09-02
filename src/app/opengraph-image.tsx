@@ -13,9 +13,9 @@ export default function OpenGraphImage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #070A0F 0%, #0B1020 40%, #070A0F 100%)",
-          color: "white",
-          fontFamily: "system-ui",
+          background: "linear-gradient(160deg, #F3F6F4 0%, #E8EFEC 45%, #F7F4EE 100%)",
+          color: "#15201C",
+          fontFamily: "Georgia, serif",
           position: "relative",
           overflow: "hidden",
         }}
@@ -23,9 +23,9 @@ export default function OpenGraphImage() {
         <div
           style={{
             position: "absolute",
-            inset: -200,
+            inset: 0,
             background:
-              "radial-gradient(circle at 20% 20%, rgba(99,102,241,0.40), transparent 40%), radial-gradient(circle at 80% 35%, rgba(59,130,246,0.22), transparent 45%), radial-gradient(circle at 50% 120%, rgba(99,102,241,0.18), transparent 50%)",
+              "radial-gradient(circle at 12% 18%, rgba(20, 110, 95, 0.12), transparent 42%), radial-gradient(circle at 88% 20%, rgba(196, 168, 110, 0.16), transparent 40%)",
           }}
         />
         <div
@@ -36,21 +36,30 @@ export default function OpenGraphImage() {
             flexDirection: "column",
           }}
         >
-          <div style={{ fontSize: 28, opacity: 0.9 }}>Matías Rodríguez</div>
-          <div style={{ marginTop: 18, fontSize: 72, fontWeight: 650, lineHeight: 1.05 }}>
+          <div style={{ fontSize: 26, color: "#1F6B5C", fontWeight: 600 }}>
+            Matías Rodríguez
+          </div>
+          <div
+            style={{
+              marginTop: 18,
+              fontSize: 68,
+              fontWeight: 500,
+              lineHeight: 1.08,
+            }}
+          >
             Desarrollo web y automatización en Chile
           </div>
-          <div style={{ marginTop: 18, fontSize: 28, opacity: 0.85 }}>
+          <div style={{ marginTop: 18, fontSize: 26, color: "#4A5A54" }}>
             Next.js · Shopify · SEO · Apps · Procesos
           </div>
           <div
             style={{
               marginTop: 40,
               display: "flex",
-              padding: "14px 18px",
-              borderRadius: 999,
-              background: "rgba(99,102,241,0.16)",
-              border: "1px solid rgba(99,102,241,0.35)",
+              padding: "12px 16px",
+              borderRadius: 8,
+              background: "#146E5F",
+              color: "#F7FBFA",
               fontSize: 18,
               letterSpacing: 0.2,
             }}

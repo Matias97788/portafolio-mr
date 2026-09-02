@@ -79,33 +79,27 @@ export default async function BlogPostPage({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b border-border">
-        <div className="mx-auto flex w-full max-w-3xl items-center justify-between gap-4 px-4 py-4">
-          <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground">
+    <>
+      <main className="mx-auto w-full max-w-3xl px-4 py-12">
+        <p className="text-sm text-muted-foreground">
+          <Link href="/blog" className="hover:text-foreground">
             ← Blog
           </Link>
-          <Link href="/#contacto" className="text-sm text-primary underline underline-offset-4">
-            Cotizar
-          </Link>
-        </div>
-      </header>
-
-      <main className="mx-auto w-full max-w-3xl px-4 py-12">
-        <p className="text-xs text-muted-foreground">
+        </p>
+        <p className="mt-6 text-xs text-muted-foreground">
           {new Date(post.publishedAt).toLocaleDateString("es-CL", {
             year: "numeric",
             month: "long",
             day: "numeric",
           })}
         </p>
-        <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="font-display mt-3 text-balance text-3xl tracking-tight sm:text-4xl">
           {post.title}
         </h1>
         <p className="mt-4 text-muted-foreground">{post.description}</p>
 
         {post.cover ? (
-          <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-[var(--radius-lg)] border border-border">
+          <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl border border-border">
             <Image
               src={post.cover}
               alt={post.coverAlt ?? post.title}
@@ -121,8 +115,8 @@ export default async function BlogPostPage({ params }: PageProps) {
           <PostContent content={post.content} />
         </div>
 
-        <section className="mt-12 rounded-[var(--radius-lg)] border border-border bg-card/50 p-6">
-          <h2 className="text-lg font-semibold">¿Quieres aplicar esto en tu negocio?</h2>
+        <section className="mt-12 border-t border-border pt-8">
+          <h2 className="font-display text-2xl">¿Quieres aplicar esto en tu negocio?</h2>
           <p className="mt-2 text-sm text-muted-foreground">
             Revisa los{" "}
             <Link href="/servicios" className="text-primary underline underline-offset-4">
@@ -141,6 +135,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </div>
+    </>
   );
 }
