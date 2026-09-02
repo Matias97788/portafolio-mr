@@ -36,7 +36,7 @@ export default function ServiciosPage() {
     <>
       <main className="mx-auto w-full max-w-6xl px-4 py-14">
         <p className="text-sm font-medium text-primary">Santiago · Chile</p>
-        <h1 className="font-display mt-2 text-4xl tracking-tight sm:text-5xl">
+        <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
           Servicios digitales para pymes en Chile
         </h1>
         <p className="mt-4 max-w-2xl text-muted-foreground">
@@ -51,7 +51,7 @@ export default function ServiciosPage() {
               key={s.id}
               className="flex h-full flex-col border-t border-border pt-5"
             >
-              <h2 className="font-display text-2xl tracking-tight">
+              <h2 className="text-xl font-semibold tracking-tight">
                 <Link
                   href={`/servicios/${s.id}`}
                   className="hover:text-primary"

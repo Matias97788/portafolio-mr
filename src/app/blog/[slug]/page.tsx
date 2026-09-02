@@ -93,7 +93,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             day: "numeric",
           })}
         </p>
-        <h1 className="font-display mt-3 text-balance text-3xl tracking-tight sm:text-4xl">
+        <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
           {post.title}
         </h1>
         <p className="mt-4 text-muted-foreground">{post.description}</p>
@@ -116,7 +116,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
 
         <section className="mt-12 border-t border-border pt-8">
-          <h2 className="font-display text-2xl">¿Quieres aplicar esto en tu negocio?</h2>
+          <h2 className="text-xl font-semibold">¿Quieres aplicar esto en tu negocio?</h2>
           <p className="mt-2 text-sm text-muted-foreground">
             Revisa los{" "}
             <Link href="/servicios" className="text-primary underline underline-offset-4">

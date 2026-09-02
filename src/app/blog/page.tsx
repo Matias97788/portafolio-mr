@@ -17,7 +17,7 @@ export default async function BlogPage() {
   return (
     <>
       <main className="mx-auto w-full max-w-6xl px-4 py-14">
-        <h1 className="font-display text-4xl tracking-tight sm:text-5xl">
+        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
           Blog
         </h1>
         <p className="mt-3 max-w-2xl text-muted-foreground">
@@ -48,7 +48,7 @@ export default async function BlogPage() {
                     day: "numeric",
                   })}
                 </p>
-                <h2 className="font-display mt-2 text-2xl tracking-tight">
+                <h2 className="mt-2 text-xl font-semibold tracking-tight">
                   <Link
                     href={`/blog/${post.slug}`}
                     className="hover:text-primary"

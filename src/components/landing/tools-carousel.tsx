@@ -64,9 +64,9 @@ export function ToolsCarousel() {
       <div className="mx-auto w-full max-w-6xl px-4 py-14">
         <Reveal>
           <div>
-            <h2 className="font-display text-3xl tracking-tight">
-              Herramientas
-            </h2>
+              <h2 className="text-2xl font-semibold tracking-tight">
+                Herramientas
+              </h2>
             <p className="mt-2 text-sm text-muted-foreground">
               Stack práctico, probado y enfocado en entrega.
             </p>

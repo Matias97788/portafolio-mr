@@ -35,7 +35,7 @@ export function About({
                 </div>
               </div>
               <div className="min-w-0">
-                <h2 className="font-display text-3xl tracking-tight">{title}</h2>
+                <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Badge variant="primary">Ingeniero en Informática</Badge>
                   <Badge>Full Stack</Badge>

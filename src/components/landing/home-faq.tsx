@@ -38,7 +38,7 @@ export function HomeFaq() {
   return (
     <section id="faq" className="border-b border-border">
       <div className="mx-auto w-full max-w-6xl px-4 py-16">
-        <h2 className="font-display text-3xl tracking-tight">
+        <h2 className="text-2xl font-semibold tracking-tight">
           Preguntas frecuentes
         </h2>
         <p className="mt-2 max-w-2xl text-sm text-muted-foreground">

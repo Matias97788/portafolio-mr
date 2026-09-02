@@ -123,7 +123,7 @@ export default async function ServicioPage({ params }: PageProps) {
         <p className="mt-6 text-sm font-medium text-primary">
           Servicio · Santiago, Chile
         </p>
-        <h1 className="font-display mt-3 text-balance text-3xl tracking-tight sm:text-4xl">
+        <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
           {service.h1}
         </h1>
         <p className="mt-5 leading-7 text-muted-foreground">{service.intro}</p>
@@ -144,7 +144,7 @@ export default async function ServicioPage({ params }: PageProps) {
         </div>
 
         <section className="mt-14">
-          <h2 className="font-display text-3xl tracking-tight">Qué entregas</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">Qué entregas</h2>
           <ul className="mt-4 list-disc space-y-2 pl-5 text-muted-foreground">
             {service.outcomes.map((item) => (
               <li key={item}>{item}</li>
@@ -153,7 +153,7 @@ export default async function ServicioPage({ params }: PageProps) {
         </section>
 
         <section className="mt-14">
-          <h2 className="font-display text-3xl tracking-tight">Cómo trabajamos</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">Cómo trabajamos</h2>
           <ol className="mt-6 space-y-6">
             {service.process.map((step, i) => (
               <li key={step.title} className="border-t border-border pt-5">
@@ -166,7 +166,7 @@ export default async function ServicioPage({ params }: PageProps) {
         </section>
 
         <section className="mt-14">
-          <h2 className="font-display text-3xl tracking-tight">
+          <h2 className="text-2xl font-semibold tracking-tight">
             Preguntas frecuentes
           </h2>
           <div className="mt-6 space-y-3">
@@ -186,7 +186,7 @@ export default async function ServicioPage({ params }: PageProps) {
 
         {relatedPosts.length > 0 ? (
           <section className="mt-14">
-            <h2 className="font-display text-3xl tracking-tight">
+            <h2 className="text-2xl font-semibold tracking-tight">
               Artículos relacionados
             </h2>
             <div className="mt-4 grid gap-4">
@@ -207,7 +207,7 @@ export default async function ServicioPage({ params }: PageProps) {
         ) : null}
 
         <section className="mt-14 border-t border-border pt-8">
-          <h2 className="font-display text-2xl">¿Hablamos de tu proyecto?</h2>
+          <h2 className="text-xl font-semibold">¿Hablamos de tu proyecto?</h2>
           <p className="mt-2 text-sm text-muted-foreground">
             Cuéntame objetivo, plazo y links de referencia. Te respondo con
             alcance, tiempos y costo estimado.

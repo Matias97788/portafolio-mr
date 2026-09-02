@@ -9,9 +9,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const links = [
+  { href: "/portafolio", label: "Portafolio", kind: "route" },
   { href: "/servicios", label: "Servicios", kind: "route" },
   { href: "/blog", label: "Blog", kind: "route" },
-  { href: "/#proyectos", label: "Proyectos", kind: "hash" },
   { href: "/#quien-soy", label: "Quién Soy", kind: "hash" },
   { href: "/#herramientas", label: "Herramientas", kind: "hash" },
 ] as const;
@@ -39,7 +39,7 @@ export function NavBar() {
             MR
           </div>
           <div className="hidden leading-tight sm:block">
-            <div className="font-display text-base font-medium tracking-tight">
+            <div className="text-sm font-semibold tracking-tight">
               Matías Rodríguez
             </div>
             <div className="text-xs text-muted-foreground">

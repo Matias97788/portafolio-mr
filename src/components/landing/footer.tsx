@@ -9,7 +9,7 @@ export function Footer() {
       <div className="mx-auto w-full max-w-6xl px-4 py-12">
         <div className="grid gap-10 sm:grid-cols-2">
           <div>
-            <div className="font-display text-xl tracking-tight">
+            <div className="text-sm font-semibold tracking-tight">
               Matías Rodríguez
             </div>
             <div className="mt-2 text-sm text-muted-foreground">
@@ -44,6 +44,11 @@ export function Footer() {
             <div className="text-sm font-semibold">Menú</div>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li>
+                <Link className="hover:text-foreground" href="/portafolio">
+                  Portafolio
+                </Link>
+              </li>
+              <li>
                 <Link className="hover:text-foreground" href="/servicios">
                   Servicios
                 </Link>
@@ -51,11 +56,6 @@ export function Footer() {
               <li>
                 <Link className="hover:text-foreground" href="/blog">
                   Blog
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:text-foreground" href="/#proyectos">
-                  Proyectos
                 </Link>
               </li>
               <li>
