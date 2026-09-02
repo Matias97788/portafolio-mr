@@ -3,7 +3,8 @@
   "framework": "nextjs",
   "env": {
     "SITE_URL": "https://matiasrodriguez.dev",
-    "NEXT_PUBLIC_GA_MEASUREMENT_ID": "G-BVVJM5E6SM"
+    "NEXT_PUBLIC_GA_MEASUREMENT_ID": "G-BVVJM5E6SM",
+    "GOOGLE_SITE_VERIFICATION": "yXfgvky36VBgUGI98S-m1Q-aKtbmQ4BPWN9Qwc5WdpI"
   },
   "crons": [
     {

@@ -75,9 +75,11 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
-  verification: process.env.GOOGLE_SITE_VERIFICATION
-    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
-    : undefined,
+  verification: {
+    google:
+      process.env.GOOGLE_SITE_VERIFICATION ||
+      "yXfgvky36VBgUGI98S-m1Q-aKtbmQ4BPWN9Qwc5WdpI",
+  },
 };
 
 export default function RootLayout({
