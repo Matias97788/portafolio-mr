@@ -46,7 +46,7 @@ export function getAiProviderConfig(): AiProviderConfig | null {
       provider: "groq",
       apiKey: groqKey,
       baseUrl: "https://api.groq.com/openai/v1",
-      model: process.env.AI_MODEL?.trim() || "llama-3.3-70b-versatile",
+      model: process.env.AI_MODEL?.trim() || "openai/gpt-oss-120b",
     };
   }
 
@@ -81,7 +81,7 @@ export function getAiProviderConfig(): AiProviderConfig | null {
       model:
         process.env.AI_MODEL?.trim() ||
         process.env.OPENAI_MODEL?.trim() ||
-        (provider === "groq" ? "llama-3.3-70b-versatile" : "gpt-4o-mini"),
+        (provider === "groq" ? "openai/gpt-oss-120b" : "gpt-4o-mini"),
     };
   }
 
