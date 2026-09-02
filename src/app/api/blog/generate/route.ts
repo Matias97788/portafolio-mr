@@ -4,6 +4,7 @@ import { requireAdmin } from "@/lib/server/auth";
 import { generateBlogDraft } from "@/lib/server/ai-blog";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {
   const guard = await requireAdmin();

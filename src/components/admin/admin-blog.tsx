@@ -81,7 +81,15 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
     setLastPublishedUrl(null);
     setNotice({
       type: "success",
-      message: "Borrador generado. Revisa y publica.",
+      message:
+        "Borrador listo abajo. Revísalo y pulsa “Publicar en web” para que salga en el sitio.",
+    });
+
+    requestAnimationFrame(() => {
+      document.getElementById("draft-review")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     });
   };
 
@@ -194,15 +202,33 @@ export function AdminBlog({ initialPosts }: { initialPosts: BlogPostMeta[] }) {
             />
           </div>
           <Button onClick={generate} disabled={loading === "generate"}>
-            {loading === "generate" ? "Generando..." : "Generar con IA"}
+            {loading === "generate"
+              ? "Generando (puede tardar ~30s)..."
+              : "Generar con IA"}
           </Button>
+          {loading === "generate" ? (
+            <p className="text-xs text-muted-foreground">
+              Creando borrador… no cierra esta pestaña.
+            </p>
+          ) : null}
+          {notice ? (
+            <p
+              className={
+                notice.type === "success"
+                  ? "text-sm text-green-400"
+                  : "text-sm text-red-400"
+              }
+            >
+              {notice.message}
+            </p>
+          ) : null}
         </CardContent>
       </Card>
 
       {draft ? (
-        <Card>
+        <Card id="draft-review">
           <CardHeader>
-            <CardTitle>2. Revisar borrador</CardTitle>
+            <CardTitle>2. Revisar borrador (aún no publicado)</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">

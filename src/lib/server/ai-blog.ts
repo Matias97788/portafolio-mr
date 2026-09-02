@@ -23,14 +23,29 @@ type AiProviderConfig = {
 
 function extractJson(raw: string) {
   const fenced = raw.match(/```json\s*([\s\S]*?)```/i);
-  const candidate = fenced?.[1]?.trim() ?? raw.trim();
-  return JSON.parse(candidate) as {
-    title: string;
-    description: string;
-    content: string;
-    linkedinText: string;
-    tags: string[];
-  };
+  let candidate = (fenced?.[1] ?? raw).trim();
+
+  if (!candidate.startsWith("{")) {
+    const start = candidate.indexOf("{");
+    const end = candidate.lastIndexOf("}");
+    if (start >= 0 && end > start) {
+      candidate = candidate.slice(start, end + 1);
+    }
+  }
+
+  try {
+    return JSON.parse(candidate) as {
+      title: string;
+      description: string;
+      content: string;
+      linkedinText: string;
+      tags: string[];
+    };
+  } catch {
+    throw new Error(
+      "La IA devolvió un formato inválido. Intenta generar de nuevo.",
+    );
+  }
 }
 
 export function pickAutoTopic() {
@@ -110,14 +125,14 @@ Escribe un artículo de blog en español (Chile), útil y concreto, sobre: "${to
 
 Requisitos:
 - Tono profesional, claro, sin relleno.
-- 700 a 950 palabras en markdown.
+- 500 a 700 palabras en markdown.
 - Incluye H2 y H3.
 - Incluye una lista con viñetas y un bloque de conclusión con CTA suave hacia cotizar.
 - Incluye 1–2 enlaces markdown internos a páginas relevantes como /servicios/desarrollo-web, /servicios/ecommerce, /servicios/automatizacion, /servicios/growth o /blog.
 - No inventes métricas ni clientes falsos.
 - Enfócate en valor práctico para dueños de negocio y equipos de marketing en Chile.
 
-Devuelve SOLO JSON válido con esta forma:
+Devuelve SOLO JSON válido (sin markdown fences) con esta forma:
 {
   "title": "...",
   "description": "meta description SEO de máximo 155 caracteres",
@@ -126,46 +141,68 @@ Devuelve SOLO JSON válido con esta forma:
   "tags": ["tag1", "tag2", "tag3"]
 }`;
 
-  const res = await fetch(`${config.baseUrl}/chat/completions`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${config.apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: config.model,
-      temperature: 0.7,
-      max_tokens: 8192,
-      messages: [
-        {
-          role: "system",
-          content:
-            "Respondes únicamente JSON válido. Eres experto en SEO técnico y desarrollo web.",
-        },
-        { role: "user", content: prompt },
-      ],
-    }),
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 55_000);
+
+  let res: Response;
+  try {
+    res = await fetch(`${config.baseUrl}/chat/completions`, {
+      method: "POST",
+      signal: controller.signal,
+      headers: {
+        Authorization: `Bearer ${config.apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: config.model,
+        temperature: 0.5,
+        max_tokens: 6000,
+        messages: [
+          {
+            role: "system",
+            content:
+              "Respondes únicamente JSON válido, sin texto extra ni fences. Eres experto en SEO técnico y desarrollo web.",
+          },
+          { role: "user", content: prompt },
+        ],
+      }),
+    });
+  } catch (error) {
+    if (error instanceof Error && error.name === "AbortError") {
+      throw new Error(
+        "La generación tardó demasiado. Intenta de nuevo en unos segundos.",
+      );
+    }
+    throw error;
+  } finally {
+    clearTimeout(timeout);
+  }
 
   if (!res.ok) {
     throw new Error(`${config.provider} error: ${await res.text()}`);
   }
 
   const data = (await res.json()) as {
-    choices?: Array<{ message?: { content?: string } }>;
+    choices?: Array<{ message?: { content?: string | null } }>;
   };
   const content = data.choices?.[0]?.message?.content;
-  if (!content) throw new Error("La IA no devolvió contenido");
+  if (!content?.trim()) throw new Error("La IA no devolvió contenido");
 
   const parsed = extractJson(content);
+  if (!parsed.title?.trim() || !parsed.content?.trim()) {
+    throw new Error("La IA devolvió un borrador incompleto. Intenta de nuevo.");
+  }
+
   const slug = slugify(parsed.title);
 
   return {
     slug,
     title: parsed.title,
-    description: parsed.description,
+    description: parsed.description || parsed.title,
     content: parsed.content,
-    linkedinText: parsed.linkedinText,
-    tags: parsed.tags,
+    linkedinText:
+      parsed.linkedinText ||
+      `${parsed.title}\n\n${parsed.description || ""}\n\n#DesarrolloWeb #Chile`,
+    tags: Array.isArray(parsed.tags) ? parsed.tags : ["web", "chile", "seo"],
   };
 }
